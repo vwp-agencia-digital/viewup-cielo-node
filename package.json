@@ -1,0 +1,17 @@
+{
+  "name": "viewup-cielo-node",
+  "description": "Cielo API v3.0.0 SDK",
+  "keywords": [
+    "gateway",
+    "cielo",
+    "pagamentos",
+    "ecommerce",
+    "node js cielo"
+  ],
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.0.0"
+  }
+}
