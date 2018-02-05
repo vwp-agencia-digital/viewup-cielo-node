@@ -7,13 +7,13 @@ after_script:
   - mv ./docs/README.md /var/www/viewup-cielo-node/README.md
 
 stages:
-    - build
     - test
-    - deploy
 
 document:
-  stage: build
+  stage: test
   script:
+    - npm install -g docify
+    - npm install
     - npm run document
   only:
     - master
