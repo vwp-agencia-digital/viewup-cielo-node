@@ -1,6 +1,7 @@
 before_script:
-  - npm install -g docify
   - ls
+  - git config --global user.email "washington@viewup.com.br"
+  - git config --global user.name "Washington (Servidor Local)"
 after_script:
   - mkdir  -p  /var/www/viewup-cielo-node
   - mv ./docs/index.html /var/www/viewup-cielo-node/index.html
