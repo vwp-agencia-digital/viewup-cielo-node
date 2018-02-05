@@ -7,12 +7,12 @@ const Environment = require('./../lib/Ecommerce/Environment').default;
 const should = require("should");
 
 
-describe("Your description", function () {
+describe("Abstract Request ", function () {
     const settings = {
         MerchantId: "4ee62ca0-72f4-41e0-9463-2b387ab67616",
         MerchantKey: "JNQYFXBOGYIIQGSQEGJJSNGIVIBJHJQIQBQAIEZD"
     };
-    it('Your test key', function (done) {
+    it('Method payment request ping', function (done) {
 
 
         const merchant = new Merchant(settings.MerchantId, settings.MerchantKey);
@@ -39,11 +39,7 @@ describe("Your description", function () {
 
         request
             .sendRequest(AbstractRequest.POST, 'https://apisandbox.cieloecommerce.cielo.com.br/1/sales/', data)
-            .then(result => {
-                console.log([result]);
-                done();
-            })
+            .then(() => done())
             .catch((e) => done(e))
-        //done();
     });
 });
