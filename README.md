@@ -37,6 +37,9 @@ O resultado final entra-se na pasta `lib/` gerada pelo TypeScript.
 
 ## Test
 
+Tenha em mão o seu MerchantId e MerchantKey para desenvolvedores. Para isso basta acessar  o [Sandbox Register](https://cadastrosandbox.cieloecommerce.cielo.com.br/)
+e fazer um cadastro rápido.
+
 Clone o projeto do servidor local, instale os módulos e divirta-se
 
 

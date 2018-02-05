@@ -1,0 +1,8 @@
+before_script:
+  - npm install -g docify
+  - npm install
+after_script:
+  - npm run document
+  - mkdir /var/www/viewup-cielo-node
+  - mv ./docs/index.html /var/www/viewup-cielo-node/index.html
+  - mv ./docs/README.md /var/www/viewup-cielo-node/README.md
