@@ -11,6 +11,7 @@
   "scripts": {
     "grunt": "grunt",
     "tsc": "tsc --watch",
+    "tsc-build": "tsc",
     "test": "mocha test/",
     "document": "docify init ./docs; docsify serve docs"
   },

@@ -9,13 +9,24 @@ after_script:
   - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
 
 stages:
-    - test
+  - build
+  - test
 
+build_lib:
+  stage: build
+  script:
+    - npm install
+    - npm run tsc-build
+  tags:
+      - cielo
+      - dev-ops
+      - ecommerce
+      - viewup
 document:
   stage: test
   script:
-    - echo '$CI_PROJECT_DIR/docs'
-    - docify init '$CI_PROJECT_DIR/docs'
+    - echo $CI_PROJECT_DIR/docs
+    - docify init $CI_PROJECT_DIR/docs
   only:
     - master
   tags:
