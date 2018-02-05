@@ -14,7 +14,7 @@ document:
   script:
     - npm install -g docify
     - npm install
-    - docsify init ./docs
+    - docify init ./docs
     - ls
   only:
     - master

@@ -12,7 +12,7 @@
     "grunt": "grunt",
     "tsc": "tsc --watch",
     "test": "mocha test/",
-    "document": "docsify init ./docs;docsify serve docs"
+    "document": "docify init ./docs; docsify serve docs"
   },
   "version": "0.0.0",
   "main": "index.js",
