@@ -1,6 +1,6 @@
 before_script:
   - npm install -g docify
-  - npm install
+  - ls
 after_script:
   - mkdir  -p  /var/www/viewup-cielo-node
   - mv ./docs/index.html /var/www/viewup-cielo-node/index.html
@@ -12,8 +12,6 @@ stages:
 document:
   stage: test
   script:
-    - npm install -g docify
-    - npm install
     - docify init ./docs
     - ls
   only:
