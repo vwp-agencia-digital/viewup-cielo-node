@@ -4,8 +4,8 @@ before_script:
   - git config --global user.name "Washington (Servidor Local)"
 after_script:
   - mkdir  -p  /var/www/viewup-cielo-node
-  - mv ./docs/index.html /var/www/viewup-cielo-node/index.html
-  - mv ./docs/README.md /var/www/viewup-cielo-node/README.md
+  - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
+  - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
 
 stages:
     - test
@@ -13,7 +13,7 @@ stages:
 document:
   stage: test
   script:
-    - docify init ./docs
+    - docify init $CI_PROJECT_DIR/docs
     - ls
   only:
     - master
