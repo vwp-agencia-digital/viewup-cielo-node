@@ -13,25 +13,66 @@ git@192.168.25.2:viewup/viewup-cielo-node.git
 Repositório Remoto
 
 ```
-ssh://root@hospedaup.com.br:288/home/git/repositories/viewup-cielo-node.git/
+ssh://root@hospedaup.com.br:288/home/git/repositories/viewup-cielo-node.git
+```
+
+## Contribuindo
+
+- Clone o repositório do Repositório Local
+- Crie um branch que exemplifique as tarefas que forem ser executadas (ex: feature/query-sale, hotfix/change-payment-status)
+- Assim que terminado, faça merge para o branch master usando a flag `--no-ff`
+
+## Test
+
+Clone o projeto do servidor local, instale os módulos e divirta-se
+
+
+```bash
+yarn run test
+```
+
+```bash
+npm run test
+```
+
+
+
+## Grar documentação
+
+Para gerar a documentação, tenha instalado na maquina o Docify:
+
+```bash
+npm install -g docify
+```
+
+Altere o README.md e rode o comando.
+```bash
+docsify init ./docs
+```
+
+Para ver o resultado inicie o servidor do docify
+```bash
+docsify serve docs
 ```
 
 ## Principais recursos
 
-* [ ] Pagamentos por cartão de crédito.
-* [ ] Pagamentos recorrentes.
-    * [ ] Com autorização na primeira recorrência.
-    * [ ] Com autorização a partir da primeira recorrência.
-* [ ] Pagamentos por cartão de débito.
-* [ ] Pagamentos por boleto.
+* [ ] Pagamentos por cartão de crédito. (Obrigatório)
+* [ ] Pagamentos recorrentes.  (Opcional - 2º plano)
+    * [ ] Com autorização na primeira recorrência.(Opcional - 2º plano)
+    * [ ] Com autorização a partir da primeira recorrência.(Opcional - 2º plano)
+* [ ] Pagamentos por cartão de débito.(Opcional - 2º plano)
+* [ ] Pagamentos por boleto. (Obrigatório)
 * [ ] Pagamentos por transferência eletrônica.
-* [ ] Cancelamento de autorização.
-* [ ] Consulta de pagamentos.
-* [ ] Tokenização de cartão.
+* [ ] Cancelamento de autorização. (Obrigatório)
+* [ ] Consulta de pagamentos. (Obrigatório)
+* [ ] Tokenização de cartão.(Opcional - 2º plano)
 
 ## Limitações
 
-Por envolver a interface de usuário da aplicação, o SDK funciona apenas como um framework para criação das transações. Nos casos onde a autorização é direta, não há limitação; mas nos casos onde é necessário a autenticação ou qualquer tipo de redirecionamento do usuário, o desenvolvedor deverá utilizar o SDK para gerar o pagamento e, com o link retornado pela Cielo, providenciar o redirecionamento do usuário.
+Por envolver a interface de usuário da aplicação, o SDK funciona apenas como um framework para criação das transações.
+Nos casos onde a autorização é direta, não há limitação; mas nos casos onde é necessário a autenticação ou qualquer tipo de redirecionamento do usuário,
+ o desenvolvedor deverá utilizar o SDK para gerar o pagamento e, com o link retornado pela Cielo, providenciar o redirecionamento do usuário.
 
 ## Dependências
 
@@ -470,14 +511,6 @@ try {
 // ...
 ```
 
-## Test
-
-Clone o projeto do servidor local, instale os módulos e divirta-se
-
-
-```bash
-yarn run test
-```
 
 ## Manual
 

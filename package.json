@@ -11,7 +11,8 @@
   "scripts": {
     "grunt": "grunt",
     "tsc": "tsc --watch",
-    "test": "mocha test/"
+    "test": "mocha test/",
+    "document": "docsify init ./docs;docsify serve docs"
   },
   "version": "0.0.0",
   "main": "index.js",
@@ -32,6 +33,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "moment": "^2.20.1",
     "uniqid": "^4.1.1"
   }
 }

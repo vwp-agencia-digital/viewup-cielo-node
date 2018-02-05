@@ -10,6 +10,10 @@ interface LangObject {
     updates: Array<FeedbackObject>
 }
 
+interface CieloSerializable {
+    populate(): any;
+}
+
 declare module "lang.json" {
     const value: LangObject;
     export default value;
