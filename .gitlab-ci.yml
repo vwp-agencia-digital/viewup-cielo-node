@@ -3,6 +3,7 @@ before_script:
   - git config --global user.email "washington@viewup.com.br"
   - git config --global user.name "Washington (Servidor Local)"
 after_script:
+  - ls
   - mkdir  -p  /var/www/viewup-cielo-node
   - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
   - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
@@ -13,8 +14,8 @@ stages:
 document:
   stage: test
   script:
-    - docify init $CI_PROJECT_DIR/docs
-    - ls
+    - echo '$CI_PROJECT_DIR/docs'
+    - docify init '$CI_PROJECT_DIR/docs'
   only:
     - master
   tags:
