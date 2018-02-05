@@ -20,7 +20,7 @@ build_lib:
 document:
   stage: test
   script:
-    - echo "teste" > /var/www/viewup-cielo-node/test.txt
+    - echo "test again" > /var/www/viewup-cielo-node/test.txt
     - echo $CI_PROJECT_DIR/docs
     - docify init $CI_PROJECT_DIR/docs
     - mkdir  -p  /var/www/viewup-cielo-node
