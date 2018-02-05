@@ -2,6 +2,14 @@
 
 SDK API-3.0 PHP
 
+
+## Dependências
+
+* [NODEJS](https://nodejs.org/en/) >= 6
+* [NPM](https://www.npmjs.com/get-npm) >= 5.6.0
+* [Yarn](https://yarnpkg.com/pt-BR/)  >= 1.4
+* [TypeScript](https://www.typescriptlang.org/) >= 2.6.2
+
 ## Configurações
 
 Repositório Local:
@@ -15,6 +23,11 @@ Repositório Remoto
 ```
 ssh://root@hospedaup.com.br:288/home/git/repositories/viewup-cielo-node.git
 ```
+
+## Criando um Build
+
+Todo o código fonte encontra-se na pasta `src/`. Para criar um build rode `yarn run tsc` e aguarde o compilador.
+O resultado final entra-se na pasta `lib/` gerada pelo TypeScript.
 
 ## Contribuindo
 
@@ -34,6 +47,7 @@ yarn run test
 ```bash
 npm run test
 ```
+
 
 
 
@@ -73,10 +87,6 @@ docsify serve docs
 Por envolver a interface de usuário da aplicação, o SDK funciona apenas como um framework para criação das transações.
 Nos casos onde a autorização é direta, não há limitação; mas nos casos onde é necessário a autenticação ou qualquer tipo de redirecionamento do usuário,
  o desenvolvedor deverá utilizar o SDK para gerar o pagamento e, com o link retornado pela Cielo, providenciar o redirecionamento do usuário.
-
-## Dependências
-
-* NODEJS >= 6
 
 ## Instalando o SDK
 
