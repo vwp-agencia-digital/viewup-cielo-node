@@ -117,6 +117,8 @@ npm install --save git+ssh://root@hospedaup.com.br/home/git/repositories/viewup-
 | JCB              | CreditCard::JCB        | Sim             | Sim                    | *Não*  | *Não*   |
 | Aura             | CreditCard::AURA       | Sim             | Sim                    | *Não*  | *Não*   |
 
+<!--
+TODO Atualzar a documentação de PHP para a SDK em Node JS
 ## Utilizando o SDK
 
 Para criar um pagamento simples com cartão de crédito com o SDK, basta fazer:
@@ -520,7 +522,7 @@ try {
 }
 // ...
 ```
-
+-->
 
 ## Manual
 
