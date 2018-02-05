@@ -2,11 +2,6 @@ before_script:
   - ls
   - git config --global user.email "washington@viewup.com.br"
   - git config --global user.name "Washington (Servidor Local)"
-after_script:
-  - ls
-  - mkdir  -p  /var/www/viewup-cielo-node
-  - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
-  - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
 
 stages:
   - build
@@ -25,8 +20,12 @@ build_lib:
 document:
   stage: test
   script:
+    - echo "teste" > /var/www/viewup-cielo-node/test.txt
     - echo $CI_PROJECT_DIR/docs
     - docify init $CI_PROJECT_DIR/docs
+    - mkdir  -p  /var/www/viewup-cielo-node
+    - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
+    - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
   only:
     - master
   tags:
