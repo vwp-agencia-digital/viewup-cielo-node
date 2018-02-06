@@ -10,7 +10,7 @@ describe("Your description", function () {
 
         // ...
         // Configure o ambiente
-        const environment = Environment::sandbox();
+        const environment = Environment.sandbox();
 
         // Configure seu merchant
         const merchant = new Merchant('MERCHANT ID', 'MERCHANT KEY');
@@ -36,7 +36,7 @@ describe("Your description", function () {
         // Crie uma instância de Payment informando o valor do pagamento
         sale
             .payment(15700)
-            .setType(Payment::PAYMENTTYPE_BOLETO)
+            .setType(Payment.PAYMENTTYPE_BOLETO)
             .setAddress('Rua de Teste')
             .setBoletoNumber('1234')
             .setAssignor('Empresa de Teste')

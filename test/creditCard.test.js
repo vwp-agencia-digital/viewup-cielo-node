@@ -138,7 +138,7 @@ describe("Cielo - Credit Card Tester", function () {
     it('Create Payment', function () {
         // ...
         // Configure o ambiente
-        const environment = Environment::sandbox();
+        const environment = Environment.sandbox();
 
         // Configure seu merchant
         const merchant = new Merchant('MERCHANT ID', 'MERCHANT KEY');
@@ -157,8 +157,8 @@ describe("Cielo - Credit Card Tester", function () {
         // Crie uma instância de Credit Card utilizando os dados de teste
         // esses dados estão disponíveis no manual de integração
         const cc = payment
-            .setType(Payment::PAYMENTTYPE_CREDITCARD)
-            .creditCard("123", CreditCard::VISA);
+            .setType(Payment.PAYMENTTYPE_CREDITCARD)
+            .creditCard("123", CreditCard.VISA);
         should(cc).be.an.instanceOf(CreditCard);
 
         cc
