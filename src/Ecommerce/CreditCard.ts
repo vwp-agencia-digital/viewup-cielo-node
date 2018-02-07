@@ -1,13 +1,14 @@
 export default class CreditCard {
-    readonly VISA = "Visa";
-    readonly MASTERCARD = "Master";
-    readonly AMEX = "Amex";
-    readonly ELO = "Elo";
-    readonly AURA = "Aura";
-    readonly JCB = "JCB";
-    readonly DINERS = "Diners";
-    readonly DISCOVER = "Discover";
-    readonly HIPERCARD = "Hipercard";
+    static  readonly VISA = "Visa";
+    static  readonly MASTERCARD = "Master";
+    static  readonly AMEX = "Amex";
+    static  readonly ELO = "Elo";
+    static  readonly AURA = "Aura";
+    static  readonly JCB = "JCB";
+    static  readonly DINERS = "Diners";
+    static  readonly DISCOVER = "Discover";
+    static  readonly HIPERCARD = "Hipercard";
+
     private cardNumber ?: String;
     private holder ?: String;
     private expirationDate ?: String;

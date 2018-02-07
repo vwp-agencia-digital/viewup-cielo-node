@@ -44,16 +44,15 @@ const HIPERCARD = 'Hipercard';
 
 describe("Cielo - Credit Card Tester", function () {
     it('Contants', function () {
-        const creditCard = new CreditCard();
-        should(creditCard.VISA).be.eql(VISA);
-        should(creditCard.MASTERCARD).be.eql(MASTERCARD);
-        should(creditCard.AMEX).be.eql(AMEX);
-        should(creditCard.ELO).be.eql(ELO);
-        should(creditCard.AURA).be.eql(AURA);
-        should(creditCard.JCB).be.eql(JCB);
-        should(creditCard.DINERS).be.eql(DINERS);
-        should(creditCard.DISCOVER).be.eql(DISCOVER);
-        should(creditCard.HIPERCARD).be.eql(HIPERCARD);
+        should(CreditCard.VISA).be.eql(VISA);
+        should(CreditCard.MASTERCARD).be.eql(MASTERCARD);
+        should(CreditCard.AMEX).be.eql(AMEX);
+        should(CreditCard.ELO).be.eql(ELO);
+        should(CreditCard.AURA).be.eql(AURA);
+        should(CreditCard.JCB).be.eql(JCB);
+        should(CreditCard.DINERS).be.eql(DINERS);
+        should(CreditCard.DISCOVER).be.eql(DISCOVER);
+        should(CreditCard.HIPERCARD).be.eql(HIPERCARD);
     });
     it('Getters and Setters', function () {
         const creditCard = new CreditCard();
@@ -111,7 +110,7 @@ describe("Cielo - Credit Card Tester", function () {
 
         should(creditCard.getSaveCard()).be.eql(shape.SaveCard);
 
-        should(creditCard.getBrand()).be.eql(creditCard.VISA);
+        should(creditCard.getBrand()).be.eql(CreditCard.VISA);
 
         //should(creditCard.getLinks()).be.eql(["link_1", "link_2"]);
 
