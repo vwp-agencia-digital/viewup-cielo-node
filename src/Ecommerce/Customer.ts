@@ -12,7 +12,7 @@ export default class Customer implements CieloSerializable{
 
     static readonly PERSON: string = 'CPF';
 
-    constructor(name: string){
+    constructor(name: string) {
         this._name = name;
         this._address = new Address();
         this._deliveryAddress = new Address();
