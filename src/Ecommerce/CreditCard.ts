@@ -25,6 +25,7 @@ export default class CreditCard {
         this.securityCode = data.SecurityCode;
         this.saveCard = data.SaveCard;
         this.brand = data.Brand;
+        return this;
     }
     toJSON() {
         return {

@@ -237,17 +237,17 @@ describe("Cielo - Payment tester", function () {
 
         const payment = (new Payment).populate(shape);
 
-        should(payment.getServiceTaxAmount()).be.eql(1500);
+        should(payment.getServiceTaxAmount()).be.eql(0);
 
-        should(payment.getInstallments()).be.eql(2);
+        should(payment.getInstallments()).be.eql(1);
 
-        should(payment.getInterest()).be.eql(1500);
+        should(payment.getInterest()).be.eql(shape.Payment.Interest);
 
         should(payment.getCapture()).be.eql(shape.Payment.Capture);
 
         should(payment.getAuthenticate()).be.eql(shape.Payment.Authenticate);
 
-        should(payment.getRecurrent()).be.eql(shape.Payment.Currency);
+        should(payment.getCurrency()).be.eql(shape.Payment.Currency);
 
 //should(payment.getRecurrentPayment()).be.eql();
 
