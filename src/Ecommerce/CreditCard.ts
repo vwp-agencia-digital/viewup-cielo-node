@@ -1,13 +1,13 @@
-export default class CreditCard implements CieloSerializable {
-    VISA ?: String;
-    MASTERCARD ?: String;
-    AMEX ?: String;
-    ELO ?: String;
-    AURA ?: String;
-    JCB ?: String;
-    DINERS ?: String;
-    DISCOVER ?: String;
-    HIPERCARD ?: String;
+export default class CreditCard {
+    readonly VISA = "Visa";
+    readonly MASTERCARD = "Master";
+    readonly AMEX = "Amex";
+    readonly ELO = "Elo";
+    readonly AURA = "Aura";
+    readonly JCB = "JCB";
+    readonly DINERS = "Diners";
+    readonly DISCOVER = "Discover";
+    readonly HIPERCARD = "Hipercard";
     private cardNumber ?: String;
     private holder ?: String;
     private expirationDate ?: String;
@@ -17,58 +17,85 @@ export default class CreditCard implements CieloSerializable {
     private cardToken ?: String;
     private customerName ?: String;
     private links ?: String;
-
-    public static sandbox() {
-        /**
-         * Bandeira Visa
-         */
-        const VISA = "Visa";
-        /**
-         * Bandeira Mastercard
-         */
-        const MASTERCARD = "Master";
-        /**
-         * Bandeira American Express
-         */
-        const AMEX = "Amex";
-        /**
-         * Bandeira ELO
-         */
-        const ELO = "Elo";
-        /**
-         * Bandeira Aura
-         */
-        const AURA = "Aura";
-        /**
-         * Bandeira JCB
-         */
-        const JCB = "JCB";
-        /**
-         * Bandeira Diners
-         */
-        const DINERS = "Diners";
-        /**
-         * Bandeira Discover
-         */
-        const DISCOVER = "Discover";
-        /**
-         * Bandeira Hipercard
-         */
-        const HIPERCARD = "Hipercard";
-    }
-    populate(data ?: any) {
-        this.cardNumber = data.CreditCard.cardNumber;
-        this.holder = data.CreditCard.holder;
-        this.expirationDate = data.CreditCard.expirationDate;
-        this.securityCode = data.CreditCard.securityCode;
-        this.saveCard = data.CreditCard.saveCard;
-        this.brand = data.CreditCard.brand;
-        this.cardToken = data.CreditCard.cardToken;
-        this.customerName = data.CreditCard.customerName;
-        this.links = data.CreditCard.links;
+    populate(data ?: any): any {
+        this.cardNumber = data.CardNumber;
+        this.holder = data.Holder;
+        this.expirationDate = data.ExpirationDate;
+        this.securityCode = data.SecurityCode;
+        this.saveCard = data.SaveCard;
+        this.brand = data.Brand;
     }
     toJSON() {
-        return {};
+        return {
+            "CardNumber": this.cardNumber,
+            "Holder": this.holder,
+            "ExpirationDate": this.expirationDate,
+            "SecurityCode": this.securityCode,
+            "SaveCard": this.saveCard,
+            "Brand": this.brand
+        };
     }
-
+    getCardNumber() {
+        return this.cardNumber;
+    }
+    setCardNumber(cardNumber: string) {
+        this.cardNumber = cardNumber;
+        return this;
+    }
+    getHolder() {
+        return this.holder;
+    }
+    setHolder(holder: string) {
+        this.holder = holder;
+        return this;
+    }
+    getExpirationDate() {
+        return this.expirationDate;
+    }
+    setExpirationDate(expirationDate: string) {
+        this.expirationDate = expirationDate;
+        return this;
+    }
+    getSecurityCode() {
+        return this.securityCode;
+    }
+    setSecurityCode(securityCode: string) {
+        this.securityCode = securityCode;
+        return this;
+    }
+    getSaveCard() {
+        return this.saveCard;
+    }
+    setSaveCard(saveCard: string) {
+        this.saveCard = saveCard;
+        return this;
+    }
+    getBrand() {
+        return this.brand;
+    }
+    setBrand(brand: string) {
+        this.brand = brand;
+        return this;
+    }
+    getCardToken() {
+        return this.cardToken;
+    }
+    setCardToken(cardToken: string) {
+        this.cardToken = cardToken;
+        return this;
+    }
+    getCustomerName() {
+        return this.customerName;
+    }
+    setCustomerName(customerName: string) {
+        this.customerName = customerName;
+        return this;
+    }
+    getLinks() {
+        return this.links;
+    }
+    setLinks(links: string) {
+        this.links = links;
+        return this;
+    }
 }
