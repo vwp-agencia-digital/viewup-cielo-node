@@ -90,7 +90,6 @@ export default class Customer implements CieloSerializable{
     }
 
     populate( plainObject: Object): Customer {
-        
         Object.keys(plainObject).map( (key) => {
             var classKey = '_' + key.slice(0, 1).toLowerCase() + key.slice(1);
 
@@ -105,22 +104,20 @@ export default class Customer implements CieloSerializable{
             else{
                 this[classKey] = plainObject[key];
             }
-            
         });
 
         return this;
 
     },
-    // toJSON() {
-    //     return {
-    //         "Street": this.getStreet(),
-    //         "Number": this.getNumber(),
-    //         "Complement": this.getComplement(),
-    //         "ZipCode": this.getZipCode(),
-    //         "City": this.getCity(),
-    //         "State": this.getState(),
-    //         "Country": this.getCountry(),
-    //         "District": this.getDistrict()
-    //     };
-    // }
+    toJSON() {
+        return {
+            "Name": this.getName(),
+            "Email": this.getEmail(),
+            "Birthdate": this.getBirthDate(),
+            "Identity": this.getIdentity(),
+            "IdentityType": this.getIdentityType(),
+            "Address": this.getAddress(),
+            "DeliveryAddress": this.getDeliveryAddress(),
+        };
+    }
 }
