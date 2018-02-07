@@ -76,21 +76,30 @@ export default class Customer implements CieloSerializable{
         return this._address;
     }
 
+    getAddress() : Address{
+        return this._address;
+    }
+
     setDeliveryAddress(address: Address = new Address() ): Address{
         this._deliveryAddress = address;        
         return this._deliveryAddress;
     }
 
-    populate( plainObject: Object): any {
+    getDeliveryAddress(): Address {
+        return this._deliveryAddress;
+    }
+
+    populate( plainObject: Object): Customer {
         
         Object.keys(plainObject).map( (key) => {
             var classKey = '_' + key.slice(0, 1).toLowerCase() + key.slice(1);
 
             if(key == 'Address' || key == 'DeliveryAddress'){
                 // esperar a implementação da classe Address implementada pelo Breno
-
-                // this[classKey] = new Address().populate(plainObject[key]);
-                this[classKey] = new Address();
+                this[classKey].populate({
+                    Address: plainObject[key]]
+                );
+                // this[classKey] = new Address();
 
             }
             else{
@@ -101,5 +110,17 @@ export default class Customer implements CieloSerializable{
 
         return this;
 
-    }
+    },
+    // toJSON() {
+    //     return {
+    //         "Street": this.getStreet(),
+    //         "Number": this.getNumber(),
+    //         "Complement": this.getComplement(),
+    //         "ZipCode": this.getZipCode(),
+    //         "City": this.getCity(),
+    //         "State": this.getState(),
+    //         "Country": this.getCountry(),
+    //         "District": this.getDistrict()
+    //     };
+    // }
 }
