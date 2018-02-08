@@ -12,12 +12,10 @@ export default class CreateSaleRequest extends AbstractRequest{
         this.environment = environment;
     }
 
-    execute(sale ?: Sale) {
+    async execute(sale ?: Sale) {
+        console.log(sale);
         const url = `${this.environment.getApiUrl()}1/sales/`;
-        return super.sendRequest("POST", url, sale);
-    }
-    protected toJSON(json ?: any ) {
-        sale = (new Sale).populate(JSON.parse(json))
-        return ;
+        const response = await super.sendRequest("POST", url, JSON.parse(JSON.stringify(sale)));
+        return response;
     }
 }

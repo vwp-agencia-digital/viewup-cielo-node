@@ -15,6 +15,7 @@ export default class Sale implements CieloSerializable {
         this._merchantOrderId = data.MerchantOrderId;
         this._customer = (new Customer(data.Customer.name)).populate(data.Customer);
         this._payment = (new Payment).populate(data.Payment);
+        return this ;
     }
     toJSON() {
         return {
