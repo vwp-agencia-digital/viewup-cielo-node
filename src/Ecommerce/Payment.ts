@@ -54,7 +54,9 @@ export default class Payment implements CieloSerializable {
     private _identification ?: string;
     private _instructions ?: string;
 
-    constructor() {
+    constructor(amount = 0 , installments = 1) {
+        this._amount = amount;
+        this._installments = installments;
         this._creditCard = new CreditCard;
     }
     toJSON() {
@@ -97,48 +99,49 @@ export default class Payment implements CieloSerializable {
 
 
     populate(data ?: any) {
-        this._serviceTaxAmount = data.Payment.ServiceTaxAmount;
-        this._installments = data.Payment.Installments;
-        this._interest = data.Payment.Interest;
-        this._capture = data.Payment.Capture;
-        this._authenticate = data.Payment.Authenticate;
-        this._recurrent = data.Payment.Recurrent;
-        this._recurrentPayment = data.Payment.RecurrentPayment;
-        this._creditCard = (new CreditCard).populate(data.Payment.CreditCard) ;
-        this._debitCard = data.Payment.DebitCard;
-        this._authenticationUrl = data.Payment.AuthenticationUrl;
-        this._tid = data.Payment.Tid;
-        this._proofOfSale = data.Payment.ProofOfSale;
-        this._authorizationCode = data.Payment.AuthorizationCode;
-        this._softDescriptor = data.Payment.SoftDescriptor;
-        this._returnUrl = data.Payment.ReturnUrl;
-        this._provider = data.Payment.Provider;
-        this._paymentId = data.Payment.PaymentId;
-        this._type = data.Payment.Type;
-        this._amount = data.Payment.Amount;
-        this._receivedDate = data.Payment.ReceivedDate;
-        this._capturedAmount = data.Payment.CapturedAmount;
-        this._capturedDate = data.Payment.CapturedDate;
-        this._voidedAmount = data.Payment.VoidedAmount;
-        this._voidedDate = data.Payment.VoidedDate;
-        this._currency = data.Payment.Currency;
-        this._country = data.Payment.Country;
-        this._returnCode = data.Payment.ReturnCode;
-        this._returnMessage = data.Payment.ReturnMessage;
-        this._status = data.Payment.Status;
-        this._links = data.Payment.Links;
-        this._extraDataCollection = data.Payment.ExtraDataCollection;
-        this._expirationDate = data.Payment.ExpirationDate;
-        this._url = data.Payment.Url;
-        this._number = data.Payment.Number;
-        this._boletoNumber = data.Payment.BoletoNumber;
-        this._barCodeNumber = data.Payment.BarCodeNumber;
-        this._digitableLine = data.Payment.DigitableLine;
-        this._address = data.Payment.Address;
-        this._assignor = data.Payment.Assignor;
-        this._demonstrative = data.Payment.Demonstrative;
-        this._identification = data.Payment.Identification;
-        this._instructions = data.Payment.Instructions;
+        data.Payment = data.Payment || {};
+        this._serviceTaxAmount = data.ServiceTaxAmount;
+        this._installments = data.Installments;
+        this._interest = data.Interest;
+        this._capture = data.Capture;
+        this._authenticate = data.Authenticate;
+        this._recurrent = data.Recurrent;
+        this._recurrentPayment = data.RecurrentPayment;
+        this._creditCard = (new CreditCard).populate(data.CreditCard) ;
+        this._debitCard = data.DebitCard;
+        this._authenticationUrl = data.AuthenticationUrl;
+        this._tid = data.Tid;
+        this._proofOfSale = data.ProofOfSale;
+        this._authorizationCode = data.AuthorizationCode;
+        this._softDescriptor = data.SoftDescriptor;
+        this._returnUrl = data.ReturnUrl;
+        this._provider = data.Provider;
+        this._paymentId = data.PaymentId;
+        this._type = data.Type;
+        this._amount = data.Amount;
+        this._receivedDate = data.ReceivedDate;
+        this._capturedAmount = data.CapturedAmount;
+        this._capturedDate = data.CapturedDate;
+        this._voidedAmount = data.VoidedAmount;
+        this._voidedDate = data.VoidedDate;
+        this._currency = data.Currency;
+        this._country = data.Country;
+        this._returnCode = data.ReturnCode;
+        this._returnMessage = data.ReturnMessage;
+        this._status = data.Status;
+        this._links = data.Links;
+        this._extraDataCollection = data.ExtraDataCollection;
+        this._expirationDate = data.ExpirationDate;
+        this._url = data.Url;
+        this._number = data.Number;
+        this._boletoNumber = data.BoletoNumber;
+        this._barCodeNumber = data.BarCodeNumber;
+        this._digitableLine = data.DigitableLine;
+        this._address = data.Address;
+        this._assignor = data.Assignor;
+        this._demonstrative = data.Demonstrative;
+        this._identification = data.Identification;
+        this._instructions = data.Instructions;
         return this;
     }
     creditCard() {
