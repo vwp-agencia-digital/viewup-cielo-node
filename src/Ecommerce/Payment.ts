@@ -61,45 +61,42 @@ export default class Payment implements CieloSerializable {
     }
     toJSON() {
         return {
-            "Payment": {
-                "Type": this.getType(),
-                "Amount": this.getAmount(),
-                "ServiceTaxAmount": this.getServiceTaxAmount(),
-                "Installments": this.getInstallments(),
-                "Interest": this.getInterest(),
-                "Capture": this.getCapture(),
-                "Authenticate": this.getAuthenticate(),
-                "SoftDescriptor": this.getSoftDescriptor(),
-                "CreditCard": this.getCreditCard(),
-                "CapturedAmount": this.getCapturedAmount(),
-                "ProofOfSale": this.getProofOfSale(),
-                "Tid": this.getTid(),
-                "AuthorizationCode": this.getAuthorizationCode(),
-                "PaymentId": this.getPaymentId(),
-                "Currency": this.getCurrency(),
-                "Country": this.getCountry(),
-                "ExtraDataCollection": this.getExtraDataCollection(),
-                "Status": this.getStatus(),
-                "ReturnCode": this.getReturnCode(),
-                "ReturnMessage": this.getReturnMessage(),
-                "Instructions": this.getInstructions(),
-                "ExpirationDate": this.getExpirationDate(),
-                "Url": this.getUrl(),
-                "Number": this.getNumber(),
-                "BarCodeNumber": this.getBarCodeNumber(),
-                "DigitableLine": this.getDigitableLine(),
-                "Assignor": this.getAssignor(),
-                "Address": this.getAddress(),
-                "Identification": this.getIdentification(),
-                "Provider": this.getProvider(),
-                "Links": this.getLinks(),
-            }
+            "Type": this.getType(),
+            "Amount": this.getAmount(),
+            "ServiceTaxAmount": this.getServiceTaxAmount(),
+            "Installments": this.getInstallments(),
+            "Interest": this.getInterest(),
+            "Capture": this.getCapture(),
+            "Authenticate": this.getAuthenticate(),
+            "SoftDescriptor": this.getSoftDescriptor(),
+            "CreditCard": this.getCreditCard(),
+            "CapturedAmount": this.getCapturedAmount(),
+            "ProofOfSale": this.getProofOfSale(),
+            "Tid": this.getTid(),
+            "AuthorizationCode": this.getAuthorizationCode(),
+            "PaymentId": this.getPaymentId(),
+            "Currency": this.getCurrency(),
+            "Country": this.getCountry(),
+            "ExtraDataCollection": this.getExtraDataCollection(),
+            "Status": this.getStatus(),
+            "ReturnCode": this.getReturnCode(),
+            "ReturnMessage": this.getReturnMessage(),
+            "Instructions": this.getInstructions(),
+            "ExpirationDate": this.getExpirationDate(),
+            "Url": this.getUrl(),
+            "Number": this.getNumber(),
+            "BarCodeNumber": this.getBarCodeNumber(),
+            "DigitableLine": this.getDigitableLine(),
+            "Assignor": this.getAssignor(),
+            "Address": this.getAddress(),
+            "Identification": this.getIdentification(),
+            "Provider": this.getProvider(),
+            "Links": this.getLinks(),
         };
     }
 
 
     populate(data ?: any) {
-        data.Payment = data.Payment || {};
         this._serviceTaxAmount = data.ServiceTaxAmount;
         this._installments = data.Installments;
         this._interest = data.Interest;

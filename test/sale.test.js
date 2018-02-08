@@ -106,7 +106,6 @@ describe("Cielo - Sale tester", function () {
         should(customer.getIdentity()).be.eql(shape.Customer.Identity);
 
         should(customer.getIdentityType()).be.eql(Customer.PERSON);
-        console.log(customer);
 
         const address = customer.address();
 
@@ -207,8 +206,8 @@ describe("Cielo - Sale tester", function () {
     });
 
     it('toJSON', function () {
-        const sale = (new Sale).populate(shape);
-        console.log(sale);
+        const sale = new Sale;
+        sale.populate(shape);
         should(JSON.parse(JSON.stringify(sale))).be.eql(shape);
     })
 
