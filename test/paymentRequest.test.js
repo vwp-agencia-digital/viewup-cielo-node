@@ -3,6 +3,7 @@ const Environment = require("./../lib/Ecommerce/Environment").default;
 const Merchant = require("./../lib/Merchant").default;
 const AbstractRequest = require("../lib/Ecommerce/Request/AbstractRequest").default;
 const CieloRequestException = require('../lib/Ecommerce/Request/CieloRequestException');
+require("./../lib/Locales/pt-br").default(AbstractRequest);
 
 const CieloEcommerce = require("./../lib/Ecommerce/CieloEcommerce").default;
 const CreateSaleRequest = require("./../lib/Ecommerce/Request/CreateSaleRequest").default;
@@ -52,7 +53,7 @@ describe("Create new Payment", function () {
 
             // Configure seu merchant
             const merchant = new Merchant('ce9f9e03-5e49-4cae-b579-2f83ab0ac5c2', 'RKGFELXMNQJHEODQHRWIOFQWRAKVZMDECITLVMEN');
-            const sale = (new Sale).populate(shape);
+            const sale = (new Sale()).populate(shape);
             const transaction = (new CieloEcommerce(merchant, environment)).prepare(sale);
 
             should(transaction).be.an.instanceOf(CreateSaleRequest);
@@ -108,7 +109,7 @@ describe("Create new Payment", function () {
             return null;
         } catch (e) {
 
-            
+
             // should(e).be.an.instanceOf(CieloRequestException);
 
             throw e;
