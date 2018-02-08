@@ -1,39 +1,55 @@
 export default class Address implements CieloSerializable {
-    street ?: String;
-    number ?: Number;
-    complement ?: String;
-    zipCode ?: String;
-    city ?: String;
-    state ?: String;
-    country ?: String;
-    district ?: String;
-    populate(data ?: any): any {
-        this.street = data.Street;
-        this.number = data.Number;
-        this.complement = data.Complement;
-        this.zipCode = data.ZipCode;
-        this.city = data.City;
-        this.state = data.State;
-        this.country = data.Country;
-        this.district = data.District;
+    
+    private street: string;
+    private number: number;
+    private complement: string;
+    private zipCode: string;
+    private city: string;
+    private state : string;
+    private country: string;
+    private district: string;
+
+    populate(data: Object): any{
+        this.street = data.Address.Street;
+        this.number = data.Address.Number;
+        this.complement = data.Address.Complement;
+        this.zipCode = data.Address.ZipCode;
+        this.city = data.Address.City;
+        this.state = data.Address.State;
+        this.country = data.Address.Country;
+        this.district = data.Address.District;
     }
     toJSON() {
-        return {
-                "Street": this.getStreet(),
-                "Number": this.getNumber(),
-                "Complement": this.getComplement(),
-                "ZipCode": this.getZipCode(),
-                "City": this.getCity(),
-                "State": this.getState(),
-                "Country": this.getCountry(),
-                "District": this.getDistrict()
-            };
+        const fields: string[] = [
+            "Street",
+            "Number",
+            "Complement",
+            "ZipCode",
+            "City",
+            "State",
+            "Country",
+            "District"
+        ];    
+
+        let obj = {};
+
+        fields.map( (field) => {
+
+            const lcField = field.slice(0, 1).toLowerCase() + field.slice(1);
+            if(this[lcField]){
+                console.log(this['get' + field]() );
+                obj[field] = this['get' + field]();
+            }
+        });
+
+        return obj;
+
     }
     /**
      *
      * @returns {Street}
      */
-    getStreet(): any {
+    getStreet(): string {
         return this.street;
     }
     /**
@@ -41,7 +57,7 @@ export default class Address implements CieloSerializable {
      * @param street
      * @returns Address
      */
-    setStreet(street ?: any): any {
+    setStreet(street:string): Address{
         this.street = street;
         return this;
     }
