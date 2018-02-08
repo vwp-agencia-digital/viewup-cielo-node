@@ -58,8 +58,9 @@ describe("Cielo - Sale tester", function () {
         const sale = new Sale(shape.MerchantOrderId);
         should(sale.getMerchantOrderId()).be.eql(shape.MerchantOrderId);
 
-        const payment = sale.payment(sale.Payment);
 
+        const payment = sale.payment(shape.Payment.Amount,shape.Payment.Installments);
+        payment.populate(shape.Payment);
         should(payment.getServiceTaxAmount()).be.eql(0);
 
         should(payment.getInstallments()).be.eql(1);
@@ -96,6 +97,8 @@ describe("Cielo - Sale tester", function () {
 
         should(customer.getName()).be.eql(shape.Customer.Name);
 
+        customer.populate(shape.Customer);
+
         should(customer.getEmail()).be.eql(shape.Customer.Email);
 
         should(customer.getBirthDate()).be.eql(shape.Customer.Birthdate);
@@ -103,8 +106,10 @@ describe("Cielo - Sale tester", function () {
         should(customer.getIdentity()).be.eql(shape.Customer.Identity);
 
         should(customer.getIdentityType()).be.eql(Customer.PERSON);
+        console.log(customer);
 
         const address = customer.address();
+
 
         should(address.getStreet()).be.eql(shape.Customer.Address.Street);
         should(address.getNumber()).be.eql(shape.Customer.Address.Number);
@@ -129,9 +134,9 @@ describe("Cielo - Sale tester", function () {
     });
 
     it('Populate', function () {
-        const sale = (new Sale()).populate(shape);
+        const sale = new Sale
+        sale.populate(shape);
         should(sale.getMerchantOrderId()).be.eql(shape.MerchantOrderId);
-
         const payment = sale.getPayment();
 
         should(payment.getServiceTaxAmount()).be.eql(0);
@@ -203,7 +208,7 @@ describe("Cielo - Sale tester", function () {
 
     it('toJSON', function () {
         const sale = (new Sale).populate(shape);
-
+        console.log(sale);
         should(JSON.parse(JSON.stringify(sale))).be.eql(shape);
     })
 

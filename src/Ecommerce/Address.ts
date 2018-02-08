@@ -8,14 +8,14 @@ export default class Address implements CieloSerializable {
     country ?: String;
     district ?: String;
     populate(data ?: any): any {
-        this.street = data.Address.Street;
-        this.number = data.Address.Number;
-        this.complement = data.Address.Complement;
-        this.zipCode = data.Address.ZipCode;
-        this.city = data.Address.City;
-        this.state = data.Address.State;
-        this.country = data.Address.Country;
-        this.district = data.Address.District;
+        this.street = data.Street;
+        this.number = data.Number;
+        this.complement = data.Complement;
+        this.zipCode = data.ZipCode;
+        this.city = data.City;
+        this.state = data.State;
+        this.country = data.Country;
+        this.district = data.District;
     }
     toJSON() {
         return {

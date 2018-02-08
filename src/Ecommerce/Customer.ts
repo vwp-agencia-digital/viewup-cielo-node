@@ -1,4 +1,5 @@
 import Address from "./Address";
+import {Key} from "readline";
 
 export default class Customer implements CieloSerializable {
 
@@ -20,12 +21,18 @@ export default class Customer implements CieloSerializable {
         this._deliveryAddress = new Address();
     }
 
-    address(): Address {
-        return this.setAddress(new Address());
+    address(): Address | undefined {
+        if (!this._address) {
+            this.setAddress(new Address());
+        }
+        return this.getAddress();
     }
 
-    deliveryAddress(): Address {
-        return this.setDeliveryAddress(new Address());
+    deliveryAddress(): Address | undefined{
+        if (!this._deliveryAddress) {
+            this.setDeliveryAddress(new Address());
+        }
+        return this.getDeliveryAddress();
     }
 
     getName(): string {

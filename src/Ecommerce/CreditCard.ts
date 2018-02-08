@@ -18,8 +18,9 @@ export default class CreditCard {
     private cardToken ?: String;
     private customerName ?: String;
     private links ?: String;
-    populate(data ?: any): any {
-        this.cardNumber = data.CardNumber;
+    populate(data ?: any) {
+        data = data || {} ;
+        this.cardNumber = data.CardNumber ;
         this.holder = data.Holder;
         this.expirationDate = data.ExpirationDate;
         this.securityCode = data.SecurityCode;
