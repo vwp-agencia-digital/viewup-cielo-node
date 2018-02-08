@@ -30,7 +30,9 @@ export default class Sale implements CieloSerializable {
         return this.getCustomer();
     }
     payment(amount ?: number, installments ?: number ) {
-        this.setPayment(new Payment(amount, installments));
+        if (!this._payment) {
+            this.setPayment(new Payment(amount, installments));
+        }
         return this.getPayment();
     }
     getMerchantOrderId() {
@@ -51,7 +53,7 @@ export default class Sale implements CieloSerializable {
         return this._payment;
     }
     setPayment(payment ?: Payment): Sale {
-        this._payment = (new Payment).populate(payment);
+        this._payment = payment;
         return this;
     }
 }
