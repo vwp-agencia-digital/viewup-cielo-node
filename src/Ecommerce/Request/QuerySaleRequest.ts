@@ -16,9 +16,9 @@ export default class QuerySaleRequest extends AbstractRequest{
         this._environment = env;
     }
 
-    execute(sale: Sale){
-        const url = `${this._environment.getApiUrl}1/sales/`;
-        return super.sendRequest('POST', url, sale);
+    execute(paymentId: string){
+        const url = `${this._environment.getApiUrl()}1/sales/${paymentId}`;
+        return super.sendRequest('GET', url);
     }
 
 }
