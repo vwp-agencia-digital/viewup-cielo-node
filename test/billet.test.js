@@ -5,15 +5,15 @@ const Environment = require("./../lib/Ecommerce/Environment").default;
 const Merchant = require("./../lib/Merchant").default;
 const Sale = require("./../lib/Ecommerce/Sale").default;
 const CieloEcommerce = require("./../lib/Ecommerce/CieloEcommerce").default;
-describe("Your description", function () {
-    it('Your test key', async function () {
+describe("Cielo - Billet request", function () {
+    it('Test Billet Payment', async function () {
 
         // ...
         // Configure o ambiente
         const environment = Environment.sandbox();
 
         // Configure seu merchant
-        const merchant = new Merchant('MERCHANT ID', 'MERCHANT KEY');
+        const merchant = new Merchant('ce9f9e03-5e49-4cae-b579-2f83ab0ac5c2', 'RKGFELXMNQJHEODQHRWIOFQWRAKVZMDECITLVMEN');
 
         // Crie uma instância de Sale informando o ID do pedido na loja
         const sale = new Sale('123');

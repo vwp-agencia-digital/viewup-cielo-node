@@ -105,6 +105,7 @@ describe("Create new Payment", function () {
             should(saleResponse.getPayment().getId()).be.eql(captureSale.getPayment().getId());
             should(saleResponse.getPayment().getId()).be.eql(cancelSale.getPayment().getId());
 
+            return null;
         } catch (e) {
 
             should(e).be.an.instanceOf(CieloRequestException);
