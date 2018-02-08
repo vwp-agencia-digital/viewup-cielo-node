@@ -7,7 +7,7 @@ const Environment = require('./../lib/Ecommerce/Environment').default;
 const should = require("should");
 
 
-describe("Abstract Request ", function () {
+describe("Cielo - Abstract Request", function () {
     const settings = {
         MerchantId: "4ee62ca0-72f4-41e0-9463-2b387ab67616",
         MerchantKey: "JNQYFXBOGYIIQGSQEGJJSNGIVIBJHJQIQBQAIEZD"
