@@ -1,18 +1,22 @@
+import Merchant from "../../Merchant";
+
 import Sale from "../Sale";
-import Merchant from "../Merchant";
+import Environment from "../Environment";
 
 import AbstractRequest from "./AbstractRequest";
 
 export default class CreateSaleRequest extends AbstractRequest{
 
-    private merchant: Merchant;
+    private _environment: Environment;
 
-    constructor(merchant: Merchant){
+    constructor(merchant: Merchant, env: Environment){
+
         super(merchant);
+        this._environment = env;
     }
 
     execute(){
 
-        return new Sale(this.merchant.id);
+        return new Sale();
     }
 }

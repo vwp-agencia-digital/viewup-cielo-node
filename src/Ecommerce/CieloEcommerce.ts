@@ -18,11 +18,11 @@ export default class CieloEcommerce {
     }
 
     prepare(sale: Sale){
-        return new CreateSaleRequest();
+        return new CreateSaleRequest(this._merchant, this._environment);
     }
 
     createSale(sale: Sale){
-        const createSaleRequest = new CreateSaleRequest(this_merchant, this._enviroment);
-        return createSaleRequest;
+        const createSaleRequest = new CreateSaleRequest(this._merchant, this._environment);
+        return createSaleRequest.execute(sale);
     }
 }
