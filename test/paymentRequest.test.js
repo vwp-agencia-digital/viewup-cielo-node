@@ -58,7 +58,7 @@ describe("Create new Payment", function () {
             should(transaction).be.an.instanceOf(CreateSaleRequest);
             should(transaction).be.an.instanceOf(AbstractRequest);
 
-            const saleResponse = await   transaction.execute();
+            const saleResponse = await  transaction.execute();
 
             should(saleResponse).be.an.instanceOf(Sale);
 

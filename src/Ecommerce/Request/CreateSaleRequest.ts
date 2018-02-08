@@ -1,22 +1,25 @@
 import Merchant from "../../Merchant";
 
 import Sale from "../Sale";
-import Environment from "../Environment";
-
+import Merchant from "../../Merchant";
 import AbstractRequest from "./AbstractRequest";
+import Environment from "../Environment";
 
 export default class CreateSaleRequest extends AbstractRequest{
 
-    private _environment: Environment;
+    private environment ?: Environment;
 
-    constructor(merchant: Merchant, env: Environment){
-
+    constructor(merchant: Merchant, environment: Environment) {
         super(merchant);
-        this._environment = env;
+        this.environment = environment;
     }
 
-    execute(){
-
-        return new Sale();
+    execute(sale ?: Sale) {
+        const url = `${this.environment.getApiUrl()}1/sales/`;
+        return super.sendRequest("POST", url, sale);
+    }
+    protected toJSON(json ?: any ) {
+        sale = (new Sale).populate(JSON.parse(json))
+        return ;
     }
 }
