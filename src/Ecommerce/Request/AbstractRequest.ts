@@ -47,10 +47,17 @@ class AbstractRequest {
             } else {
                 request.headers["Content-Length"] = "0";
             }
-
-            return this.readResponse(await  axios(request));
+            const response = await  axios(request);
+            return this.readResponse(response);
         } catch (e) {
-            return this.readResponse(e.response);
+
+            console.log(["EXEC_RESPONSE", e.constructor]);
+            if (e.response) {
+                return this.readResponse(e.response);
+            }
+
+            throw e;
+
         }
     }
 

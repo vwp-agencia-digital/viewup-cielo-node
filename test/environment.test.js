@@ -8,7 +8,7 @@ const prod = {
     apiQuery: 'https://apiquery.cieloecommerce.cielo.com.br/'
 };
 const sandbox = {
-    api: "htps://apisandbox.cieloecommerce.cielo.com.br/",
+    api: "https://apisandbox.cieloecommerce.cielo.com.br/",
     apiQuery: 'https://apiquerysandbox.cieloecommerce.cielo.com.br/'
 };
 

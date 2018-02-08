@@ -1,5 +1,3 @@
-import AbstractRequest from "../../Ecommerce/Request/AbstractRequest";
-
 const errors: Array<FeedbackObject> = [
     {
         "code": 0,
@@ -1244,7 +1242,7 @@ const ptBr: LangObject = {
     updates
 };
 
-
-export default (function () {
+const register =  function (AbstractRequest) {
     AbstractRequest.register(ptBr);
-})();
+};
+export default register;

@@ -17,7 +17,7 @@ export default class Environment {
      * @return {Environment}
      */
     public static sandbox(): Environment {
-        const api = "htps://apisandbox.cieloecommerce.cielo.com.br/";
+        const api = "https://apisandbox.cieloecommerce.cielo.com.br/";
         const apiQuery = "https://apiquerysandbox.cieloecommerce.cielo.com.br/";
         return new Environment(api, apiQuery);
     }
