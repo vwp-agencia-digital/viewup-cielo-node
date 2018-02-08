@@ -5,6 +5,9 @@ const Environment = require("./../lib/Ecommerce/Environment").default;
 const Merchant = require("./../lib/Merchant").default;
 const Sale = require("./../lib/Ecommerce/Sale").default;
 const CieloEcommerce = require("./../lib/Ecommerce/CieloEcommerce").default;
+const CieloRequestException = require("../lib/Ecommerce/Request/CieloRequestException");
+
+
 describe("Cielo - Billet request", function () {
     it('Test Billet Payment', async function () {
 
@@ -48,18 +51,21 @@ describe("Cielo - Billet request", function () {
         // Crie o pagamento na Cielo
         try {
             // Configure o SDK com seu merchant e o ambiente apropriado para criar a venda
-            const saleRequest = await (new CieloEcommerce(merchant, environment)).createSale(sale);
+            const saleResponse = await (new CieloEcommerce(merchant, environment)).createSale(sale);
+
+            should(saleResponse).be.an.instanceOf(Sale);
 
             // Com a venda criada na Cielo, já temos o ID do pagamento, TID e demais
             // dados retornados pela Cielo
-            const paymentId = saleRequest.getPayment().getPaymentId();
-            const boletoURL = saleRequest.getPayment().getUrl();
+            const paymentId = saleResponse.getPayment().getPaymentId();
+            const boletoURL = saleResponse.getPayment().getUrl();
 
             console.log([paymentId, boletoURL]);
             return null;
         } catch (e) {
             // Em caso de erros de integração, podemos tratar o erro aqui.
             // os códigos de erro estão todos disponíveis no manual de integração.
+            should(e).be.an.instanceOf(CieloRequestException);
             throw e;
         }
     });
