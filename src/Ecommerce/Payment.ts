@@ -9,6 +9,8 @@ export default class Payment implements CieloSerializable {
     static readonly PROVIDER_BRADESCO = "Bradesco";
     static readonly PROVIDER_BANCO_DO_BRASIL = "BancoDoBrasil";
     static readonly PROVIDER_SIMULADO = "Simulado";
+
+
     private _serviceTaxAmount ?: number;
     private _installments ?: number;
     private _interest ?: string;
