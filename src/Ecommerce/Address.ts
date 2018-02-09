@@ -10,40 +10,34 @@ export default class Address implements CieloSerializable {
     private district: string;
 
     populate(data: Object): any{
-        this.street = data.Address.Street;
-        this.number = data.Address.Number;
-        this.complement = data.Address.Complement;
-        this.zipCode = data.Address.ZipCode;
-        this.city = data.Address.City;
-        this.state = data.Address.State;
-        this.country = data.Address.Country;
-        this.district = data.Address.District;
+
+        var attributes = Object.keys(this);
+
+        attributes.map( (attr) => {
+            var capAttr = attr.slice(0, 1).toUpperCase() + attr.slice(1);
+
+            if(data.Address[capAttr]){
+                this[attr] = data.Address[capAttr];
+            }
+        });
+
+        return this;
     }
     toJSON() {
-        const fields: string[] = [
-            "Street",
-            "Number",
-            "Complement",
-            "ZipCode",
-            "City",
-            "State",
-            "Country",
-            "District"
-        ];    
 
+        const attributes = Object.keys(this);
         let obj = {};
 
-        fields.map( (field) => {
 
-            const lcField = field.slice(0, 1).toLowerCase() + field.slice(1);
-            if(this[lcField]){
-                console.log(this['get' + field]() );
-                obj[field] = this['get' + field]();
+        attributes.map((attr) => {
+            const capAttr = attr.slice(0, 1).toUpperCase() + attr.slice(1);
+            
+            if (this[attr]) {
+                obj[capAttr] = this[attr];
             }
         });
 
         return obj;
-
     }
     /**
      *
