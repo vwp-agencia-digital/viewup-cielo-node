@@ -25,8 +25,8 @@ export default class CieloEcommerce {
         return await createSaleRequest.execute(sale);
     }
 
-    getSale(paymentId: string){
+    async getSale(paymentId: string){
         const querySaleRequest = new QuerySaleRequest(this._merchant, this._environment);
-        return querySaleRequest.execute(paymentId); 
+        return await querySaleRequest.execute(paymentId);
     }
 }
