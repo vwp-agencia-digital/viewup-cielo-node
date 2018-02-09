@@ -34,7 +34,6 @@ export default class Address implements CieloSerializable {
                 obj[capAttr] = this[attr];
             }
         });
-
         return obj;
     }
     /**

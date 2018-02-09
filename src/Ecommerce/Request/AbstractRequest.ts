@@ -47,6 +47,7 @@ class AbstractRequest {
             } else {
                 request.headers["Content-Length"] = "0";
             }
+            console.log(JSON.stringify(request,null,4))
             const response = await  axios(request);
             return this.readResponse(response);
         } catch (e) {
