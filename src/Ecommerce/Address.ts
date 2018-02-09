@@ -10,7 +10,7 @@ export default class Address implements CieloSerializable {
     private district: string;
 
     populate(data: Object): any{
-
+        data.Address = data.Address || data;
         this.street = data.Address.Street;
         this.number = data.Address.Number; 
         this.complement = data.Address.Complement; 
