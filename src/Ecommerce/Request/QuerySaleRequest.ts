@@ -18,7 +18,7 @@ export default class QuerySaleRequest extends AbstractRequest{
 
     execute(paymentId: string){
         const url = `${this._environment.getApiUrl()}1/sales/${paymentId}`;
-        return super.sendRequest(AbstractRequest.GET, url);
+        return await super.sendRequest(AbstractRequest.GET, url);
     }
 
 }
