@@ -47,12 +47,10 @@ class AbstractRequest {
             } else {
                 request.headers["Content-Length"] = "0";
             }
-            console.log(JSON.stringify(request,null,4))
             const response = await  axios(request);
             return this.readResponse(response);
         } catch (e) {
-
-            console.log(["EXEC_RESPONSE", e.constructor]);
+            console.log(["error", e]);
             if (e.response) {
                 return this.readResponse(e.response);
             }
@@ -67,7 +65,7 @@ class AbstractRequest {
         switch (status) {
             case 200:
             case 201:
-                return {};
+                return response.data;
             case 400:
                 const exception = new CieloRequestException();
                 for (let i = 0; i < response.data.length; ++i) {
@@ -76,7 +74,6 @@ class AbstractRequest {
                     exception.setCieloError(cieloError);
                 }
 
-                console.log(exception);
 
                 throw exception;
             case 404:

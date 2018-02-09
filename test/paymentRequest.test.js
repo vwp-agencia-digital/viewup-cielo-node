@@ -83,12 +83,12 @@ describe("Create new Payment", function () {
             const saleResponse = await (new CieloEcommerce(merchant, environment)).createSale(sale);
             should(saleResponse).be.an.instanceOf(Sale);
 
-            const saleQuery = await (new CieloEcommerce(merchant, environment)).getSale(saleResponse.getPayment().getId());
+            const saleQuery = await (new CieloEcommerce(merchant, environment)).getSale(saleResponse.getPayment().getPaymentId());
 
             should(saleQuery).be.an.instanceOf(Sale);
 
             const captureSale = await (new CieloEcommerce(merchant, environment)).captureSale({
-                paymentId: saleResponse.getPayment.getId(),
+                paymentId: saleResponse.getPayment().getPaymentId(),
                 amount: shape.Payment.Amount,
                 serviceTaxAmount: null
             });
@@ -96,15 +96,15 @@ describe("Create new Payment", function () {
             should(captureSale).be.an.instanceOf(Sale);
 
             const cancelSale = await  (new CieloEcommerce($merchant, $environment)).cancelSale({
-                paymentId: saleResponse.getPayment().getId(),
+                paymentId: saleResponse.getPayment().getPaymentId(),
                 amount: 15700
             });
 
             should(cancelSale).be.an.instanceOf(Sale);
 
-            should(saleResponse.getPayment().getId()).be.eql(saleQuery.getPayment().getId());
-            should(saleResponse.getPayment().getId()).be.eql(captureSale.getPayment().getId());
-            should(saleResponse.getPayment().getId()).be.eql(cancelSale.getPayment().getId());
+            should(saleResponse.getPayment().getPaymentId()).be.eql(saleQuery.getPayment().getPaymentId());
+            should(saleResponse.getPayment().getPaymentId()).be.eql(captureSale.getPayment().getPaymentId());
+            should(saleResponse.getPayment().getPaymentId()).be.eql(cancelSale.getPayment().getPaymentId());
 
             return null;
         } catch (e) {

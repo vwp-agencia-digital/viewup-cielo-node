@@ -10,15 +10,14 @@ export default class Address implements CieloSerializable {
     private district: string;
 
     populate(data: Object): any{
-
         this.street = data.Address.Street;
-        this.number = data.Address.Number; 
-        this.complement = data.Address.Complement; 
-        this.zipCode = data.Address.ZipCode; 
-        this.city = data.Address.City; 
-        this.state = data.Address.State; 
-        this.country = data.Address.Country; 
-        this.district = data.Address.District; 
+        this.number = data.Address.Number;
+        this.complement = data.Address.Complement;
+        this.zipCode = data.Address.ZipCode;
+        this.city = data.Address.City;
+        this.state = data.Address.State;
+        this.country = data.Address.Country;
+        this.district = data.Address.District;
         return this;
     }
     toJSON() {
@@ -29,12 +28,17 @@ export default class Address implements CieloSerializable {
 
         attributes.map((attr) => {
             const capAttr = attr.slice(0, 1).toUpperCase() + attr.slice(1);
-            
-            if (this[attr]) {
-                obj[capAttr] = this[attr];
+
+        fields.map( (field) => {
+
+            const lcField = field.slice(0, 1).toLowerCase() + field.slice(1);
+            if(this[lcField]){
+                console.log(this['get' + field]() );
+                obj[field] = this['get' + field]();
             }
         });
         return obj;
+
     }
     /**
      *
