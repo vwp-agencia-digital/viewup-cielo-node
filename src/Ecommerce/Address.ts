@@ -39,7 +39,6 @@ export default class Address implements CieloSerializable {
 
             const lcField = field.slice(0, 1).toLowerCase() + field.slice(1);
             if(this[lcField]){
-                console.log(this['get' + field]() );
                 obj[field] = this['get' + field]();
             }
         });
