@@ -21,13 +21,18 @@ export default class Address implements CieloSerializable {
         return this;
     }
     toJSON() {
+        const fields: string[] = [
+            "Street",
+            "Number",
+            "Complement",
+            "ZipCode",
+            "City",
+            "State",
+            "Country",
+            "District"
+        ];
 
-        const attributes = Object.keys(this);
-        let obj = {};
-
-
-        attributes.map((attr) => {
-            const capAttr = attr.slice(0, 1).toUpperCase() + attr.slice(1);
+        const obj = {};
 
         fields.map( (field) => {
 
