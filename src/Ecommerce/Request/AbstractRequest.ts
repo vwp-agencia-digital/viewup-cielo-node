@@ -57,7 +57,6 @@ class AbstractRequest {
             const response = await  axios(request);
             return this.readResponse(response);
         } catch (e) {
-            console.log(["error", e]);
             if (e.response) {
                 return this.readResponse(e.response);
             }
