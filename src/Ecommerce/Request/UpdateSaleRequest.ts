@@ -2,12 +2,12 @@ import AbstractRequest from "./AbstractRequest";
 import Environment from "../Environment";
 import Merchant from "../../Merchant";
 import Sale from "../Sale";
-import querystring from 'querystring';
+import * as querystring from "querystring";
 
 export default class UpdateSaleRequest extends AbstractRequest {
     private _environment : Environment;
-    private _type : number;
-    private _serviceTaxAmount : number;
+    private _type : string;
+    private _serviceTaxAmount: number;
     private _amount: number;
 
     constructor(type: string, merchant: Merchant, env: Environment ) {
@@ -16,29 +16,24 @@ export default class UpdateSaleRequest extends AbstractRequest {
         this._type = type;
     }
     async execute(paymentId: string) {
-        let url = `${this._environment.getApiUrl()}1/sales/${paymentId}/${this._type}`;
-       
-        let params = {};
+        try{
+            var param : any = {};
+            if (this._amount) {
+                param.amount = this._amount;
+            }
+            if (this._serviceTaxAmount) {
+                param.serviceTaxAmount = this._serviceTaxAmount;
+            }
+            var url = `${this._environment.getApiUrl()}1/sales/${paymentId}/${this.type}`;
+            url += "?" + querystring.stringify(param);
+            console.log(url);
+            const saleQuery = await super.sendRequest(AbstractRequest.PUT, url);
+            return await (new Sale(saleQuery.MerchantOrderId)).populate(saleQuery) ;
 
-        if(this._amount){
-            params.amount = this._amount;
+        }catch (e){
+
+            throw e;
         }
-
-        if(this.serviceTaxAmount){
-            params.serviceTaxAmount = this._serviceTaxAmount;
-        }
-
-
-        var qstr = querystring.stringify(params);
-      
-        console.log({qstr});
-        process.exit(1);  
-        url += '&' + qstr; 
-        console.log({url});
-             
-
-        const response = await super.sendRequest(AbstractRequest.PUT, url);
-        return (new Sale(response.MerchantOrderId)).populate(response);
     }
 
     getServiceTaxAmount() : number{
