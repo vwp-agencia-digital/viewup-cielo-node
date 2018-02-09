@@ -34,7 +34,7 @@ export default class CieloEcommerce {
     }
 
     async cancelSale(obj) {
-        const updateSaleRequest  =  new UpdateSaleRequest(null, this._merchant, this._environment);
+        const updateSaleRequest  =  new UpdateSaleRequest("void", this._merchant, this._environment);
 
         updateSaleRequest.setAmount(obj.amount);
         return await updateSaleRequest.execute(obj.paymentId);
@@ -46,7 +46,6 @@ export default class CieloEcommerce {
 
         updateSaleRequest.setAmount(obj.amount);
         updateSaleRequest.setServiceTaxAmount(obj.serviceTaxAmount);
-
         return await updateSaleRequest.execute(obj.paymentId);
     }
 
