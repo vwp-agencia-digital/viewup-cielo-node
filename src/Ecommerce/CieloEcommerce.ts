@@ -29,23 +29,24 @@ export default class CieloEcommerce {
 
     async getSale(paymentId: string) {
         const querySaleRequest = new QuerySaleRequest(this._merchant, this._environment);
-        return querySaleRequest.execute(paymentId);
+        return await querySaleRequest.execute(paymentId);
+    
     }
 
-    async cancelSale(obj) {
-        const updateSaleRequest  =  new UpdateSaleRequest(null, this._merchant, this._environment);
+    async cancelSale(obj: { amount: number; paymentId: string; }) {
+        const updateSaleRequest  =  new UpdateSaleRequest('void', this._merchant, this._environment);
 
         updateSaleRequest.setAmount(obj.amount);
         return await updateSaleRequest.execute(obj.paymentId);
     }
     //{paymentId: string, amount: number, serviceTaxAmount = null}
-    async captureSale(obj) {
+    async captureSale(obj: { amount: number; serviceTaxAmount: number; }) {
 
         const updateSaleRequest = new UpdateSaleRequest("capture", this._merchant, this._environment);
 
         updateSaleRequest.setAmount(obj.amount);
         updateSaleRequest.setServiceTaxAmount(obj.serviceTaxAmount);
-
+    
         return await updateSaleRequest.execute(obj.paymentId);
     }
 

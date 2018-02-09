@@ -2,37 +2,60 @@ import AbstractRequest from "./AbstractRequest";
 import Environment from "../Environment";
 import Merchant from "../../Merchant";
 import Sale from "../Sale";
+import querystring from 'querystring';
 
 export default class UpdateSaleRequest extends AbstractRequest {
-    private environment : Environment;
-    private type : String;
-    private _serviceTaxAmount ?: Number;
-    private _amount ?: Number;
+    private _environment : Environment;
+    private _type : number;
+    private _serviceTaxAmount : number;
+    private _amount: number;
 
-    constructor(type: String, merchant: Merchant, env: Environment ) {
+    constructor(type: string, merchant: Merchant, env: Environment ) {
         super(merchant);
-        this.environment = env;
-        this.type = type;
+        this._environment = env;
+        this._type = type;
     }
     async execute(paymentId: string) {
-        const url = `${this.environment.getApiUrl()}1/sales/${paymentId}`;
-        const saleQuery = await super.sendRequest(AbstractRequest.PUT, url);
-        return await (new Sale(saleQuery.MerchantOrderId)).populate(saleQuery) ;
+        let url = `${this._environment.getApiUrl()}1/sales/${paymentId}/${this._type}`;
+       
+        let params = {};
+
+        if(this._amount){
+            params.amount = this._amount;
+        }
+
+        if(this.serviceTaxAmount){
+            params.serviceTaxAmount = this._serviceTaxAmount;
+        }
+
+
+        var qstr = querystring.stringify(params);
+      
+        console.log({qstr});
+        process.exit(1);  
+        url += '&' + qstr; 
+        console.log({url});
+             
+
+        const response = await super.sendRequest(AbstractRequest.PUT, url);
+        return (new Sale(response.MerchantOrderId)).populate(response);
     }
 
-    getServiceTaxAmount() : Number {
+    getServiceTaxAmount() : number{
         return this._serviceTaxAmount;
     }
 
-    setServiceTaxAmount(value: Number) {
+    setServiceTaxAmount(value: number) {
         this._serviceTaxAmount = value;
+        return this;
     }
 
-    getAmount(): Number {
+    getAmount(): number{
         return this._amount;
     }
 
-    setAmount(value: Number) {
+    setAmount(value: number) {
         this._amount = value;
+        return this;
     }
 }

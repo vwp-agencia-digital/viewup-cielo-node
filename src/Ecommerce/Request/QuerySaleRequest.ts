@@ -18,8 +18,9 @@ export default class QuerySaleRequest extends AbstractRequest{
 
     async execute(paymentId: string) {
         const url = `${this._environment.getApiQueryURL()}1/sales/${paymentId}`;
-        const saleQuery = await super.sendRequest(AbstractRequest.GET, url);
-        return (new  Sale(saleQuery.MerchantOrderId)).populate(saleQuery);
+        const responseData = await (super.sendRequest(AbstractRequest.GET, url));
+        const saleResponse = ( new Sale(responseData.MerchantOrderId) ).populate(responseData);
+        return saleResponse;
     }
 
 }
