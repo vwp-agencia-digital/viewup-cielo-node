@@ -1,4 +1,6 @@
 import Address from "./Address";
+import "../Utility/Helper";
+
 import {Key} from "readline";
 
 export default class Customer implements CieloSerializable {
@@ -100,7 +102,7 @@ export default class Customer implements CieloSerializable {
 
 
     toJSON() {
-        return {
+        const planeObj : any = {
             "Name": this.getName(),
             "Email": this.getEmail(),
             "Birthdate": this.getBirthDate(),
@@ -109,6 +111,8 @@ export default class Customer implements CieloSerializable {
             "Address": this.getAddress(),
             "DeliveryAddress": this.getDeliveryAddress(),
         };
+
+        return isEmpy(planeObj);
     }
 
     populate(plainObject: any): this {

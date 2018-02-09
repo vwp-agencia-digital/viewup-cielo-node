@@ -13,7 +13,6 @@ export default class CreateSaleRequest extends AbstractRequest {
     }
 
     async execute(sale ?: Sale) {
-        console.log(sale);
         const url = `${this.environment.getApiUrl()}1/sales/`;
         return await super.sendRequest(AbstractRequest.POST, url, JSON.parse(JSON.stringify(sale)));
     }

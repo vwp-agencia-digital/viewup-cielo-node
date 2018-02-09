@@ -27,13 +27,14 @@ describe("Create new Payment", function () {
                         "City": "Rio de Janeiro",
                         "State": "RJ",
                         "Country": "BRA"
-                    }
+                    },
+
             },
         "Payment":
             {
-                "Type": "Boleto",
-                "Amount": 15700,
-                "Provider": "INCLUIR PROVIDER",
+                "Type":"Boleto",
+                "Amount":15700,
+                "Provider":"Bradesco",
                 "Address": "Rua Teste",
                 "BoletoNumber": "123",
                 "Assignor": "Empresa Teste",
@@ -55,7 +56,6 @@ describe("Create new Payment", function () {
             const merchant = new Merchant('ce9f9e03-5e49-4cae-b579-2f83ab0ac5c2', 'RKGFELXMNQJHEODQHRWIOFQWRAKVZMDECITLVMEN');
             const sale = (new Sale()).populate(shape);
             const transaction = (new CieloEcommerce(merchant, environment)).prepare(sale);
-
             should(transaction).be.an.instanceOf(CreateSaleRequest);
             should(transaction).be.an.instanceOf(AbstractRequest);
 
