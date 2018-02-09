@@ -1,4 +1,5 @@
-function isEmpy(planeObj: any): any {
+
+const isEmpy = function (planeObj: any): any {
     for (const key in planeObj) {
         if (typeof planeObj[key] === "object") {
             if (Object.keys(planeObj[key]).length < 1) {
@@ -8,3 +9,5 @@ function isEmpy(planeObj: any): any {
     }
     return planeObj;
 }
+
+export default isEmpy;

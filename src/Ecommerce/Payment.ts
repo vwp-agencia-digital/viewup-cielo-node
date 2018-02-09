@@ -1,4 +1,6 @@
 import CreditCard from "./CreditCard";
+import isEmpy from "../Utility/Helper";
+
 
 export default class Payment implements CieloSerializable {
 
@@ -60,7 +62,7 @@ export default class Payment implements CieloSerializable {
         this._creditCard = new CreditCard;
     }
     toJSON() {
-        return {
+         const planeObj = {
             "Type": this.getType(),
             "Amount": this.getAmount(),
             "ServiceTaxAmount": this.getServiceTaxAmount(),
@@ -93,6 +95,7 @@ export default class Payment implements CieloSerializable {
             "Provider": this.getProvider(),
             "Links": this.getLinks(),
         };
+        return planeObj;
     }
 
 
