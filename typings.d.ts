@@ -11,7 +11,7 @@ interface LangObject {
 }
 
 interface CieloSerializable {
-    populate(): any;
+    populate(value: any): this;
 }
 
 declare module "lang.json" {

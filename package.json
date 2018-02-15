@@ -12,10 +12,11 @@
     "grunt": "grunt",
     "tsc": "tsc --watch",
     "tsc-build": "tsc",
-    "test": "mocha test/",
-    "document": "docsify init ./docs; docsify serve docs"
+    "test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
+    "document": "docsify init ./docs; docsify serve docs",
+    "build": "tsc && yarn run test"
   },
-  "version": "0.0.0",
+  "version": "1.0.0-beta-1",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -36,5 +37,8 @@
     "axios": "^0.17.1",
     "moment": "^2.20.1",
     "uniqid": "^4.1.1"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }

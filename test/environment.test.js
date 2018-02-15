@@ -8,11 +8,11 @@ const prod = {
     apiQuery: 'https://apiquery.cieloecommerce.cielo.com.br/'
 };
 const sandbox = {
-    api: "htps://apisandbox.cieloecommerce.cielo.com.br/",
+    api: "https://apisandbox.cieloecommerce.cielo.com.br/",
     apiQuery: 'https://apiquerysandbox.cieloecommerce.cielo.com.br/'
 };
 
-describe("Cielo Enviroment checker", () => {
+describe("Cielo - Enviroment checker", () => {
     it("sandbox", () => {
         should(Environment.sandbox()).match(sandbox);
         should(Environment.sandbox().getApiUrl()).eql(sandbox.api);

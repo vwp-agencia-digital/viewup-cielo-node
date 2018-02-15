@@ -5,15 +5,18 @@ const Environment = require("./../lib/Ecommerce/Environment").default;
 const Merchant = require("./../lib/Merchant").default;
 const Sale = require("./../lib/Ecommerce/Sale").default;
 const CieloEcommerce = require("./../lib/Ecommerce/CieloEcommerce").default;
-describe("Your description", function () {
-    it('Your test key', async function () {
+const CieloRequestException = require("../lib/Ecommerce/Request/CieloRequestException").default;
+
+
+describe("Cielo - Billet request", function () {
+    it('Billet Payment', async function () {
 
         // ...
         // Configure o ambiente
         const environment = Environment.sandbox();
 
         // Configure seu merchant
-        const merchant = new Merchant('MERCHANT ID', 'MERCHANT KEY');
+        const merchant = new Merchant('ce9f9e03-5e49-4cae-b579-2f83ab0ac5c2', 'RKGFELXMNQJHEODQHRWIOFQWRAKVZMDECITLVMEN');
 
         // Crie uma instância de Sale informando o ID do pedido na loja
         const sale = new Sale('123');
@@ -48,18 +51,21 @@ describe("Your description", function () {
         // Crie o pagamento na Cielo
         try {
             // Configure o SDK com seu merchant e o ambiente apropriado para criar a venda
-            const saleRequest = await (new CieloEcommerce(merchant, environment)).createSale(sale);
+            const saleResponse = await (new CieloEcommerce(merchant, environment)).createSale(sale);
+
+            should(saleResponse).be.an.instanceOf(Sale);
 
             // Com a venda criada na Cielo, já temos o ID do pagamento, TID e demais
             // dados retornados pela Cielo
-            const paymentId = saleRequest.getPayment().getPaymentId();
-            const boletoURL = saleRequest.getPayment().getUrl();
-
-            console.log([paymentId, boletoURL]);
+            const paymentId = saleResponse.getPayment().getPaymentId();
+            const boletoURL = saleResponse.getPayment().getUrl();
+            should(paymentId).be.ok();
+            should(boletoURL).be.ok();
             return null;
         } catch (e) {
             // Em caso de erros de integração, podemos tratar o erro aqui.
             // os códigos de erro estão todos disponíveis no manual de integração.
+            should(e).be.an.instanceOf(CieloRequestException);
             throw e;
         }
     });

@@ -26,13 +26,19 @@ class AbstractRequest {
 
     async sendRequest(method: string, url: string, content?: Payment | object | undefined) {
         try {
+            if (
+                method !== AbstractRequest.POST
+                && method !== AbstractRequest.GET
+                && method !== AbstractRequest.PUT
+                && method !== AbstractRequest.DELETE
+            ) {
+                throw  new SDKError(`UNKNOW REQUEST METHOD. ${method} should be one of ${AbstractRequest.GET} ${AbstractRequest.POST} ${AbstractRequest.PUT} ${AbstractRequest.DELETE}`);
+            }
             const request: AxiosRequestConfig = {
                 method,
                 url,
                 headers: {
-                    ["Accept"]: "application/json",
-                    ["Accept-Encoding"]: "gzip",
-                    ["User-Agent"]: "CieloEcommerce/3.0 PHP SDK",
+                    ["Content-Type"]: "application/json",
                     ["MerchantId"]: this.merchant.getId(),
                     ["MerchantKey"]: this.merchant.getKey(),
                     ["RequestId"]: uniqid()
@@ -42,15 +48,21 @@ class AbstractRequest {
             if (content && (method !== AbstractRequest.POST && method !== AbstractRequest.PUT)) {
                 throw new SDKError("INVALID REQUEST METHOD", 101);
             }
+
             if (content) {
                 request.headers["Content-Type"] = "application/json";
             } else {
                 request.headers["Content-Length"] = "0";
             }
-
-            return this.readResponse(await  axios(request));
+            const response = await  axios(request);
+            return this.readResponse(response);
         } catch (e) {
-            return this.readResponse(e.response);
+            if (e.response) {
+                return this.readResponse(e.response);
+            }
+
+            throw e;
+
         }
     }
 
@@ -59,7 +71,7 @@ class AbstractRequest {
         switch (status) {
             case 200:
             case 201:
-                return {};
+                return response.data;
             case 400:
                 const exception = new CieloRequestException();
                 for (let i = 0; i < response.data.length; ++i) {
@@ -68,7 +80,6 @@ class AbstractRequest {
                     exception.setCieloError(cieloError);
                 }
 
-                console.log(exception);
 
                 throw exception;
             case 404:
@@ -76,7 +87,6 @@ class AbstractRequest {
             default:
                 throw new CieloRequestException("Unknown status", response.status);
         }
-
     }
 
 
