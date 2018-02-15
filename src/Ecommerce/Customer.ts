@@ -1,8 +1,6 @@
 import Address from "./Address";
 import isEmpy from "../Utility/Helper";
 
-import {Key} from "readline";
-
 export default class Customer implements CieloSerializable {
 
     private _name?: string | any;
@@ -30,7 +28,7 @@ export default class Customer implements CieloSerializable {
         return this.getAddress();
     }
 
-    deliveryAddress(): Address | undefined{
+    deliveryAddress(): Address | undefined {
         if (!this._deliveryAddress) {
             this.setDeliveryAddress(new Address());
         }
@@ -87,7 +85,7 @@ export default class Customer implements CieloSerializable {
         return this._address;
     }
 
-    getAddress(): Address | undefined {
+    getAddress(): Address {
         return this._address;
     }
 
@@ -96,22 +94,21 @@ export default class Customer implements CieloSerializable {
         return this._deliveryAddress;
     }
 
-    getDeliveryAddress(): Address | undefined {
+    getDeliveryAddress(): Address {
         return this._deliveryAddress;
     }
 
 
     toJSON() {
-        const planeObj : any = {
-            "Name": this.getName(),
-            "Email": this.getEmail(),
-            "Birthdate": this.getBirthDate(),
-            "Identity": this.getIdentity(),
-            "IdentityType": this.getIdentityType(),
-            "Address": this.getAddress(),
-            "DeliveryAddress": this.getDeliveryAddress(),
+        const planeObj: any = {
+            Name: this.getName(),
+            Email: this.getEmail(),
+            Birthdate: this.getBirthDate(),
+            Identity: this.getIdentity(),
+            IdentityType: this.getIdentityType(),
+            Address: this.getAddress().toJSON(),
+            DeliveryAddress: this.getDeliveryAddress().toJSON(),
         };
-
         return isEmpy(planeObj);
     }
 

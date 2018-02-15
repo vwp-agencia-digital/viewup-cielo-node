@@ -5,11 +5,11 @@ const Environment = require("./../lib/Ecommerce/Environment").default;
 const Merchant = require("./../lib/Merchant").default;
 const Sale = require("./../lib/Ecommerce/Sale").default;
 const CieloEcommerce = require("./../lib/Ecommerce/CieloEcommerce").default;
-const CieloRequestException = require("../lib/Ecommerce/Request/CieloRequestException");
+const CieloRequestException = require("../lib/Ecommerce/Request/CieloRequestException").default;
 
 
 describe("Cielo - Billet request", function () {
-    it('Test Billet Payment', async function () {
+    it('Billet Payment', async function () {
 
         // ...
         // Configure o ambiente
@@ -59,8 +59,8 @@ describe("Cielo - Billet request", function () {
             // dados retornados pela Cielo
             const paymentId = saleResponse.getPayment().getPaymentId();
             const boletoURL = saleResponse.getPayment().getUrl();
-
-            console.log([paymentId, boletoURL]);
+            should(paymentId).be.ok();
+            should(boletoURL).be.ok();
             return null;
         } catch (e) {
             // Em caso de erros de integração, podemos tratar o erro aqui.

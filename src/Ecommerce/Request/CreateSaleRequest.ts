@@ -15,7 +15,6 @@ export default class CreateSaleRequest extends AbstractRequest {
     async execute(sale ?: Sale) {
         const url = `${this.environment.getApiUrl()}1/sales/`;
         const responseData = await super.sendRequest(AbstractRequest.POST, url, JSON.parse(JSON.stringify(sale)));
-        const saleResponse = (new Sale(responseData.MerchantOrderId)).populate(responseData);
-        return saleResponse ;
+        return (new Sale(responseData.MerchantOrderId)).populate(responseData);
     }
 }

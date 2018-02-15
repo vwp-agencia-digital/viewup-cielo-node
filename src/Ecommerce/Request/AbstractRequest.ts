@@ -67,7 +67,6 @@ class AbstractRequest {
     }
 
     protected readResponse(response: AxiosResponse) {
-        console.log(["RESPONSE", response]);
         const status = response.status;
         switch (status) {
             case 200:
@@ -88,7 +87,6 @@ class AbstractRequest {
             default:
                 throw new CieloRequestException("Unknown status", response.status);
         }
-
     }
 
 

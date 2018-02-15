@@ -7,12 +7,12 @@ const Environment = require('./../lib/Ecommerce/Environment').default;
 const should = require("should");
 
 
-describe("Cielo - Abstract Request",  function () {
+describe("Cielo - Abstract Request", function () {
     const settings = {
         MerchantId: "4ee62ca0-72f4-41e0-9463-2b387ab67616",
         MerchantKey: "JNQYFXBOGYIIQGSQEGJJSNGIVIBJHJQIQBQAIEZD"
     };
-    it('Method payment request ping', async function (done) {
+    it('Method payment request ping', async function () {
 
 
         const merchant = new Merchant(settings.MerchantId, settings.MerchantKey);
@@ -37,9 +37,10 @@ describe("Cielo - Abstract Request",  function () {
             }
         };
 
-        request
-            .sendRequest(AbstractRequest.POST, 'https://apisandbox.cieloecommerce.cielo.com.br/1/sales/', data)
-            .then(() => done())
-            .catch((e) => done(e))
+        try {
+            await request.sendRequest(AbstractRequest.POST, 'https://apisandbox.cieloecommerce.cielo.com.br/1/sales/', data)
+        } catch (e) {
+            throw e;
+        }
     });
 });

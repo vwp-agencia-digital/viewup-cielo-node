@@ -1,16 +1,16 @@
-import Merchant from '../Merchant';
+import Merchant from "../Merchant";
 
-import Sale from './Sale';
-import Environment from './Environment';
-import CreateSaleRequest from './Request/CreateSaleRequest';
-import QuerySaleRequest from './Request/QuerySaleRequest';
-import UpdateSaleRequest from './Request/UpdateSaleRequest';
+import Sale from "./Sale";
+import Environment from "./Environment";
+import CreateSaleRequest from "./Request/CreateSaleRequest";
+import QuerySaleRequest from "./Request/QuerySaleRequest";
+import UpdateSaleRequest from "./Request/UpdateSaleRequest";
 // import TokenizeCardRequest from './Request/TokenizeCardRequest';
 
 export default class CieloEcommerce {
 
-    private _merchant: Merchant;
-    private _environment: Environment;
+    private readonly _merchant: Merchant;
+    private readonly _environment: Environment;
 
     constructor(merchant: Merchant, env: Environment = Environment.production()) {
 
@@ -30,23 +30,24 @@ export default class CieloEcommerce {
     async getSale(paymentId: string) {
         const querySaleRequest = new QuerySaleRequest(this._merchant, this._environment);
         return await querySaleRequest.execute(paymentId);
-    
+
     }
 
     async cancelSale(obj: { amount: number; paymentId: string; }) {
-        const updateSaleRequest  =  new UpdateSaleRequest('void', this._merchant, this._environment);
+        const updateSaleRequest = new UpdateSaleRequest("void", this._merchant, this._environment);
 
         updateSaleRequest.setAmount(obj.amount);
         return await updateSaleRequest.execute(obj.paymentId);
     }
+
     //{paymentId: string, amount: number, serviceTaxAmount = null}
-    async captureSale(obj: { amount: number; serviceTaxAmount: number; }) {
+    async captureSale(obj: { amount: number; serviceTaxAmount: number; paymentId: string }) {
 
         const updateSaleRequest = new UpdateSaleRequest("capture", this._merchant, this._environment);
 
         updateSaleRequest.setAmount(obj.amount);
         updateSaleRequest.setServiceTaxAmount(obj.serviceTaxAmount);
-    
+
         return await updateSaleRequest.execute(obj.paymentId);
     }
 

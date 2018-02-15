@@ -23,9 +23,9 @@ export default class Address implements CieloSerializable {
         return this;
     }
 
-    toJSON() {
+    toJSON(): any {
 
-        return {
+        const data: any = {
             Street: this.getStreet(),
             Number: this.getNumber(),
             Complement: this.getComplement(),
@@ -36,6 +36,12 @@ export default class Address implements CieloSerializable {
             District: this.getDistrict()
         };
 
+        for (const i in data) {
+            if (!data[i] && data.hasOwnProperty(i)) {
+                delete data[i];
+            }
+        }
+        return data;
     }
 
     /**
