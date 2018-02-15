@@ -12,19 +12,19 @@ const should = require("should");
 
 describe("Create new Payment", function () {
     const shape = {
-        "MerchantOrderId":"2014111701",
-        "Customer":{
-            "Name":"Comprador crédito completo",
-            "Email":"compradorteste@teste.com",
-            "Birthdate":"1991-01-02",
-            "Address":{
-                "Street":"Rua Teste",
-                "Number":"123",
-                "Complement":"AP 123",
-                "ZipCode":"12345987",
-                "City":"Rio de Janeiro",
-                "State":"RJ",
-                "Country":"BRA"
+        "MerchantOrderId": "2014111701",
+        "Customer": {
+            "Name": "Comprador crédito completo",
+            "Email": "compradorteste@teste.com",
+            "Birthdate": "1991-01-02",
+            "Address": {
+                "Street": "Rua Teste",
+                "Number": "123",
+                "Complement": "AP 123",
+                "ZipCode": "12345987",
+                "City": "Rio de Janeiro",
+                "State": "RJ",
+                "Country": "BRA"
             },
             "DeliveryAddress": {
                 "Street": "Rua Teste",
@@ -36,24 +36,24 @@ describe("Create new Payment", function () {
                 "Country": "BRA"
             }
         },
-        "Payment":{
-            "Type":"CreditCard",
-            "Amount":15700,
-            "Currency":"BRL",
-            "Country":"BRA",
-            "ServiceTaxAmount":0,
-            "Installments":15,
-            "Interest":"ByIssuer",
-            "Capture":true,
-            "Authenticate":false,
-            "SoftDescriptor":"123456789ABCD",
-            "CreditCard":{
-                "CardNumber":"1234123412341231",
-                "Holder":"Teste Holder",
-                "ExpirationDate":"12/2030",
-                "SecurityCode":"123",
-                "SaveCard":"false",
-                "Brand":"Visa"
+        "Payment": {
+            "Type": "CreditCard",
+            "Amount": 15700,
+            "Currency": "BRL",
+            "Country": "BRA",
+            "ServiceTaxAmount": 0,
+            "Installments": 15,
+            "Interest": "ByIssuer",
+            "Capture": true,
+            "Authenticate": false,
+            "SoftDescriptor": "123456789ABCD",
+            "CreditCard": {
+                "CardNumber": "1234123412341231",
+                "Holder": "Teste Holder",
+                "ExpirationDate": "12/2030",
+                "SecurityCode": "123",
+                "SaveCard": "false",
+                "Brand": "Visa"
             }
         }
     };
@@ -75,8 +75,6 @@ describe("Create new Payment", function () {
             const saleResponse = await  transaction.execute(sale);
 
             should(saleResponse).be.an.instanceOf(Sale);
-
-
         } catch (e) {
             throw e;
         }
@@ -93,7 +91,8 @@ describe("Create new Payment", function () {
             // Configure seu merchant
             const merchant = new Merchant(
                 'ca998c16-4e43-4d5a-9897-74f799225938',
-                'IRSELEYEPKQPKMRMDMYRVHNQEUPOCLOBWCBUOHNJ');
+                'IRSELEYEPKQPKMRMDMYRVHNQEUPOCLOBWCBUOHNJ'
+            );
             const sale = (new Sale).populate(shape);
             const saleResponse = await (new CieloEcommerce(merchant, environment)).createSale(sale);
             should(saleResponse).be.an.instanceOf(Sale);

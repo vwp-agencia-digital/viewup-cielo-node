@@ -1,15 +1,16 @@
 export default class Address implements CieloSerializable {
 
-    private street: string;
-    private number: number;
-    private complement: string;
-    private zipCode: string;
-    private city: string;
-    private state : string;
-    private country: string;
-    private district: string;
+    private street: string = "";
+    private number: string | number = "";
+    private complement: string = "";
+    private zipCode: string = "";
+    private city: string = "";
+    private state: string = "";
+    private country: string = "";
+    private district: string = "";
 
-    populate(data: Object): any{
+
+    populate(data: any): any {
         data.Address = data.Address || data;
         this.street = data.Address.Street;
         this.number = data.Address.Number;
@@ -21,30 +22,22 @@ export default class Address implements CieloSerializable {
         this.district = data.Address.District;
         return this;
     }
+
     toJSON() {
-        const fields: string[] = [
-            "Street",
-            "Number",
-            "Complement",
-            "ZipCode",
-            "City",
-            "State",
-            "Country",
-            "District"
-        ];
 
-        const obj = {};
-
-        fields.map( (field) => {
-
-            const lcField = field.slice(0, 1).toLowerCase() + field.slice(1);
-            if(this[lcField]){
-                obj[field] = this['get' + field]();
-            }
-        });
-        return obj;
+        return {
+            Street: this.getStreet(),
+            Number: this.getNumber(),
+            Complement: this.getComplement(),
+            ZipCode: this.getZipCode(),
+            City: this.getCity(),
+            State: this.getState(),
+            Country: this.getCountry(),
+            District: this.getDistrict()
+        };
 
     }
+
     /**
      *
      * @returns {Street}
@@ -52,12 +45,13 @@ export default class Address implements CieloSerializable {
     getStreet(): string {
         return this.street;
     }
+
     /**
      *
      * @param street
      * @returns Address
      */
-    setStreet(street:string): Address{
+    setStreet(street: string): Address {
         this.street = street;
         return this;
     }
@@ -97,6 +91,7 @@ export default class Address implements CieloSerializable {
         this.complement = complement;
         return this;
     }
+
     /**
      *
      * @returns {any}

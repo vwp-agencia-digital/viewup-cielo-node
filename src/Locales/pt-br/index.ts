@@ -1242,7 +1242,7 @@ const ptBr: LangObject = {
     updates
 };
 
-const register =  function (AbstractRequest) {
+const register = function (AbstractRequest: any) {
     AbstractRequest.register(ptBr);
 };
 export default register;
