@@ -74,15 +74,15 @@ docsify serve docs
 
 ## Principais recursos
 
-* [ ] Pagamentos por cartão de crédito. (Obrigatório)
+* [x] Pagamentos por cartão de crédito. (Obrigatório)
 * [ ] Pagamentos recorrentes.  (Opcional - 2º plano)
     * [ ] Com autorização na primeira recorrência.(Opcional - 2º plano)
     * [ ] Com autorização a partir da primeira recorrência.(Opcional - 2º plano)
 * [ ] Pagamentos por cartão de débito.(Opcional - 2º plano)
-* [ ] Pagamentos por boleto. (Obrigatório)
+* [x] Pagamentos por boleto. (Obrigatório)
 * [ ] Pagamentos por transferência eletrônica.
 * [ ] Cancelamento de autorização. (Obrigatório)
-* [ ] Consulta de pagamentos. (Obrigatório)
+* [x] Consulta de pagamentos. (Obrigatório)
 * [ ] Tokenização de cartão.(Opcional - 2º plano)
 
 ## Limitações
