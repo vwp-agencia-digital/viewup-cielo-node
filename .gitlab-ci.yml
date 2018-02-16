@@ -12,7 +12,6 @@ build_lib:
     - npm install
     - npm run tsc-build
     - npm run document
-    - echo "test again" >> /var/www/viewup-cielo-node/test.txt
     - mkdir  -p  /var/www/viewup-cielo-node
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
     - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
@@ -27,6 +26,7 @@ build_lib:
 test_code:
   stage: test
   script:
+    - npm install
     - npm run app_test
   only:
     - master
