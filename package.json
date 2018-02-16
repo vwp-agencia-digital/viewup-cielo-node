@@ -13,7 +13,7 @@
     "tsc": "tsc --watch",
     "tsc-build": "tsc",
     "app_test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
-    "document": "docsify init --local  ./docs; echo \"## ÚLTIMOS COMMITS\" >> ./docs/README.md; git log -1 -2 -3 --pretty=format:$'\n\n## %s\nHash: %H\n\nEmail: %ce\n\nName: %cN%\n\n```\n%s\n```\n' >> ./docs/README.md",
+    "document": "docsify init --local  ./docs; echo \"## ÚLTIMOS COMMITS\" >> ./docs/README.md; git log -1 -2 -3 --pretty=format:'\n\n## %s\nHash: %H\n\nEmail: %ce\n\nName: %cN%\n\n```\n%s\n```\n' >> ./docs/README.md",
     "build": "tsc && yarn run test"
   },
   "version": "1.0.0-beta-1",
