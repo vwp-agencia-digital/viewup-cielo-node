@@ -35,5 +35,5 @@ document:
     - ecommerce
     - viewup
 
-after_script:
-  - rm -rf $CI_PROJECT_DIR
+#after_script:
+#  - rm -rf $CI_PROJECT_DIR
