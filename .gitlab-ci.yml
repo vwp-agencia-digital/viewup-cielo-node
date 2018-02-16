@@ -24,10 +24,10 @@ build_lib:
       - dev-ops
       - ecommerce
       - viewup
-document:
+test_code:
   stage: test
   script:
-    - npm test
+    - npm run app_test
   only:
     - master
   tags:

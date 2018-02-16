@@ -12,7 +12,7 @@
     "grunt": "grunt",
     "tsc": "tsc --watch",
     "tsc-build": "tsc",
-    "test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
+    "app_test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
     "document": "docsify init --local  ./docs",
     "build": "tsc && yarn run test"
   },
