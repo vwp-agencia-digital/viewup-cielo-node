@@ -1,4 +1,4 @@
-before:
+before_script:
   - git config --global user.email "washington@viewup.com.br"
   - git config --global user.name "Washington (Servidor Local)"
 
