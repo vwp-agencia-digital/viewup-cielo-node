@@ -1,4 +1,4 @@
-before_script:
+before:
   - git config --global user.email "washington@viewup.com.br"
   - git config --global user.name "Washington (Servidor Local)"
 
@@ -12,8 +12,10 @@ build_lib:
     - npm install
     - npm run document
     - mkdir  -p  /var/www/viewup-cielo-node
+    - echo $CI_COMMIT_REF_SLUG > e
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
     - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
+    - echo $(git log -1 --decorate=short) >> /var/www/viewup-cielo-node/README.md
     - rm -rf /var/www/viewup-cielo-node/vendor
     - mv $CI_PROJECT_DIR/docs/vendor /var/www/viewup-cielo-node/vendor
 
@@ -35,6 +37,3 @@ test_code:
     - dev-ops
     - ecommerce
     - viewup
-
-#after_script:
-#  - rm -rf $CI_PROJECT_DIR
