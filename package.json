@@ -14,7 +14,8 @@
     "tsc-build": "tsc",
     "app_test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
     "document": "docsify init --local  ./docs",
-    "build": "tsc && yarn run test"
+    "build": "tsc && yarn run test",
+    "add_commits": "git log -1 -2 -3 --pretty=format:$'\n## ÚLTIMOS COMMITS \n## %s\nHash: %H\nEmail: %ce\nName: %cN%\n\n```\n%s\n```\n' >> ./docs/README.md"
   },
   "version": "1.0.0-beta-1",
   "main": "index.js",

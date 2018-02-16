@@ -531,5 +531,5 @@ try {
 
 Para mais informações sobre a integração com a API 3.0 da Cielo, vide o manual em: [Integração API 3.0](https://developercielo.github.io/manual/cielo-ecommerce)
 
-## ÚLTIMOS COMMIT
+
 

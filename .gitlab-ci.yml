@@ -11,11 +11,11 @@ build_lib:
   script:
     - npm install
     - npm run document
+    - npm run add_commits
     - mkdir  -p  /var/www/viewup-cielo-node
     - echo $CI_COMMIT_REF_SLUG > e
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
     - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
-    - git log -1 -2 -3  --pretty=format:$'## %s\nHash: %H\nEmail: %ce\nName: %cN%\n\n```\n%s\n```\n' >> /var/www/viewup-cielo-node/README.md
     - rm -rf /var/www/viewup-cielo-node/vendor
     - mv $CI_PROJECT_DIR/docs/vendor /var/www/viewup-cielo-node/vendor
 
