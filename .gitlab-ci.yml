@@ -15,7 +15,7 @@ build_lib:
     - echo $CI_COMMIT_REF_SLUG > e
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
     - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
-    - echo $(git log -1 --decorate=short) >> /var/www/viewup-cielo-node/README.md
+    - echo "$(git log -1 --decorate=short)" >> /var/www/viewup-cielo-node/README.md
     - rm -rf /var/www/viewup-cielo-node/vendor
     - mv $CI_PROJECT_DIR/docs/vendor /var/www/viewup-cielo-node/vendor
 
