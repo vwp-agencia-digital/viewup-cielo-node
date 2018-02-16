@@ -343,4 +343,3 @@ describe("Cielo - Payment tester", function () {
     })
 
 });
-

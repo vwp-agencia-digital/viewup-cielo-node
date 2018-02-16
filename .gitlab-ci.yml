@@ -22,7 +22,7 @@ document:
   script:
     - echo "test again" >> /var/www/viewup-cielo-node/test.txt
     - echo $CI_PROJECT_DIR/docs
-    - docsify init $CI_PROJECT_DIR/docs
+    - npm run document
     - ls
     - mkdir  -p  /var/www/viewup-cielo-node
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html

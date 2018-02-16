@@ -13,7 +13,7 @@
     "tsc": "tsc --watch",
     "tsc-build": "tsc",
     "test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
-    "document": "docsify init ./docs; docsify serve docs",
+    "document": "docsify init ./docs",
     "build": "tsc && yarn run test"
   },
   "version": "1.0.0-beta-1",
@@ -23,7 +23,7 @@
     "@types/axios": "^0.14.0",
     "@types/node": "^9.4.0",
     "@types/uniqid": "^4.1.2",
-    "docsify": "^4.5.7",
+    "docsify": "^4.6.3",
     "grunt": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-ts": "^6.0.0-beta.17",
