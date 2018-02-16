@@ -1,5 +1,4 @@
 before_script:
-  - ls
   - git config --global user.email "washington@viewup.com.br"
   - git config --global user.name "Washington (Servidor Local)"
 
@@ -10,8 +9,16 @@ stages:
 build_lib:
   stage: build
   script:
+    - npm i docsify-cli -g
     - npm install
     - npm run tsc-build
+    - npm run document
+    - echo "test again" >> /var/www/viewup-cielo-node/test.txt
+    - echo $CI_PROJECT_DIR/docs
+    - mkdir  -p  /var/www/viewup-cielo-node
+    - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
+    - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
+
   tags:
       - cielo
       - dev-ops
@@ -22,8 +29,6 @@ document:
   script:
     - echo "test again" >> /var/www/viewup-cielo-node/test.txt
     - echo $CI_PROJECT_DIR/docs
-    - npm run document
-    - ls
     - mkdir  -p  /var/www/viewup-cielo-node
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
     - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
@@ -34,3 +39,6 @@ document:
     - dev-ops
     - ecommerce
     - viewup
+
+after_script:
+  - rm -rf $CI_PROJECT_DIR
