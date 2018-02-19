@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 rm -rf ./dist
-mkdir -p ./dist;
-cd ./dist/
 echo "Add remote dist repository";
-git init;
-git remote add origin ssh://root@hospedaup.com.br:288/home/git/dist/viewup-cielo-node.git
+git clone ssh://root@hospedaup.com.br:288/home/git/dist/viewup-cielo-node.git dist;
 git pull origin master;
-cd ../
+
 
 
 echo "Preparing files";
