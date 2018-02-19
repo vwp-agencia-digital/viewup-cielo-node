@@ -11,6 +11,7 @@ build_lib:
   script:
     - npm install
     - npm run document
+    - npm run change
     - mkdir  -p  /var/www/viewup-cielo-node
     - echo $CI_COMMIT_REF_SLUG > e
     - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
