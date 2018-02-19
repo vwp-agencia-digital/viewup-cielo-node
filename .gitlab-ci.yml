@@ -5,6 +5,7 @@ before_script:
 stages:
   - build
   - test
+  - deploy
 
 build_lib:
   stage: build
@@ -30,6 +31,20 @@ test_code:
     - npm install
     - npm run tsc-build
     - npm run app_test
+  only:
+    - master
+  tags:
+    - cielo
+    - dev-ops
+    - ecommerce
+    - viewup
+deploy:
+  stage: deploy
+  script:
+    - npm install
+    - npm run tsc-build
+    - npm run document
+    - npm run dist
   only:
     - master
   tags:

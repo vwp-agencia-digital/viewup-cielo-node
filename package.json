@@ -15,7 +15,8 @@
     "app_test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
     "document": "docsify init --local  ./docs; echo \"## ÚLTIMOS COMMITS\" >> ./docs/README.md; git log -1 -2 -3 --date=format:'%d/%m/%Y %H horas %M minutos %S segundos' --pretty=format:'\n```\n %s\nHash: %h\nEmail: %ce\nName: %cN\nDate: %cd\n```' >> ./docs/README.md",
     "change": "chmod 777 ./changelog.sh; ./changelog.sh",
-    "build": "tsc && yarn run test"
+    "build": "tsc && yarn run test",
+    "dist.sh": "chmod 777 ./changelog.sh; ./changelog.sh; chmod 777 ./dist.sh; ./dist.sh"
   },
   "version": "1.0.1",
   "main": "index.js",

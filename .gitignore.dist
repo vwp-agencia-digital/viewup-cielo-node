@@ -1,0 +1,8 @@
+.idea
+yarn.lock
+src
+.gitlab-ci.yml
+package-lock.json
+node_modules
+*.log
+.vscode
