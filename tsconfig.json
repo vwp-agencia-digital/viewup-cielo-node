@@ -18,6 +18,8 @@
     ".idea",
     "lib",
     "test",
-    "gruntfile.js"
+    "gruntfile.js",
+    "dist",
+    "docs"
   ]
 }
