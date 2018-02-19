@@ -4,7 +4,15 @@ if   !($(git remote | grep dist > /dev/null;)); then
   echo "Add remote dist repository";
   git remote add dist ssh://root@hospedaup.com.br:288/home/git/dist/viewup-cielo-node.git
 fi
-mv ./.gitignore.dist ./.gitignore;
+IGNORE=".idea
+yarn.lock
+src
+.gitlab-ci.yml
+package-lock.json
+node_modules
+*.log
+.vscode"
+echo $IGNORE > ./.gitignore;
 git add -A;
 git commit -m "generate version";
 git push dist --all;
