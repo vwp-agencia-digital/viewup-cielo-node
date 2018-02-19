@@ -5,6 +5,7 @@ if   !($(git remote | grep dist > /dev/null;)); then
   git remote add dist ssh://root@hospedaup.com.br:288/home/git/dist/viewup-cielo-node.git
 fi
 mv ./.gitignore.dist ./.gitignore;
+git add -A;
 git commit -m "generate version";
 git push dist --all;
 echo "done"

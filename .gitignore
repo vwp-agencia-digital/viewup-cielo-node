@@ -1,9 +1,8 @@
 .idea
-lib
 yarn.lock
+src
+.gitlab-ci.yml
 package-lock.json
 node_modules
 *.log
-docs/
 .vscode
-CHANGELOG.md
