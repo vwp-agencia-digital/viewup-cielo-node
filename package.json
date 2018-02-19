@@ -17,7 +17,7 @@
     "change": "chmod 777 ./changelog.sh; ./changelog.sh",
     "build": "tsc && yarn run test"
   },
-  "version": "1.0.0-beta-1",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
