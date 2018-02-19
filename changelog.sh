@@ -31,7 +31,7 @@ PREVIOUS_TAG=${TAGS[1]}
 COMMITS=$(git log  --pretty=format:"%h")
 
 # Store our changelog in a variable to be saved to a file at the end
-MARKDOWN="# Log de alterações (atualizado em $now)"
+MARKDOWN="## Log de alterações (atualizado em $now)"
 MARKDOWN+='\n'
 
 # Loop over each commit and look for merged pull requests
@@ -44,4 +44,5 @@ done
 
 # Save our markdown to a file
 echo -e $MARKDOWN > CHANGELOG.md
+printf "\n\n"  >> "./docs/README.md";
 cat "./CHANGELOG.md" >> "./docs/README.md"
