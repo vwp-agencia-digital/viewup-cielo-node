@@ -44,5 +44,4 @@ done
 
 # Save our markdown to a file
 echo -e $MARKDOWN > CHANGELOG.md
-echo "## CHANGELOG" >> "./docs/README.md";
-echo -e $MARKDOWN >> "./docs/README.md"
+cat "./CHANGELOG.md" >> "./docs/README.md"
