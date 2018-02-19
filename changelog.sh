@@ -37,10 +37,12 @@ MARKDOWN+='\n'
 # Loop over each commit and look for merged pull requests
 for COMMIT in $COMMITS; do
 
-    INFO=$(git log -1 $COMMIT --date=format:'%d/%m/%Y %H-%M-%S' --pretty=format:'\n###  %cd \n#### %s\n```\nHash: %h\nEmail: %ce\nName: %cN\n```')
+    INFO=$(git log -1 $COMMIT --date=format:'%d/%m/%Y %H-%M-%S' --pretty=format:'\n### %cd %s\n```\nHash: %h\nEmail: %ce\nName: %cN\n```')
     MARKDOWN+="$INFO\n\n"
 
 done
 
 # Save our markdown to a file
 echo -e $MARKDOWN > CHANGELOG.md
+echo "## CHANGELOG" >> "./docs/README.md";
+echo -e $MARKDOWN >> "./docs/README.md"
