@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+CURRENT_COMMIT=$(cat .git/refs/heads/master)
 rm -rf ./dist
 echo "Add remote dist repository";
 git clone ssh://root@hospedaup.com.br:288/home/git/dist/viewup-cielo-node.git dist;
@@ -35,7 +36,7 @@ cd ./dist/
 
 
 git add -A;
-git commit -m "generate version";
+git commit -m "generate version for: $CURRENT_COMMIT" ;
 git push origin master;
 
 echo "removing local temp files";
