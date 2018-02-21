@@ -107,16 +107,16 @@ export default class Payment implements CieloSerializable {
 
 
     populate(data ?: any) {
-        this._serviceTaxAmount = data.ServiceTaxAmount || undefined;
+        this._serviceTaxAmount = data.ServiceTaxAmount;
         this._installments = data.Installments || undefined;
-        this._interest = data.Interest || undefined;
-        this._capture = data.Capture || undefined;
-        this._authenticate = data.Authenticate || undefined;
-        this._recurrent = data.Recurrent || undefined;
-        this._recurrentPayment = data.RecurrentPayment || undefined;
+        this._interest = data.Interest;
+        this._capture = data.Capture;
+        this._authenticate = data.Authenticate;
+        this._recurrent = data.Recurrent;
+        this._recurrentPayment = data.RecurrentPayment;
         this._creditCard = data.CreditCard ? (new CreditCard).populate(data.CreditCard) : undefined;
         this._debitCard = data.DebitCard || undefined;
-        this._authenticationUrl = data.AuthenticationUrl || undefined;
+        this._authenticationUrl = data.AuthenticationUrl;
         this._tid = data.Tid || undefined;
         this._proofOfSale = data.ProofOfSale || undefined;
         this._authorizationCode = data.AuthorizationCode || undefined;
