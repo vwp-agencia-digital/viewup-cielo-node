@@ -1,5 +1,4 @@
 import CreditCard from "./CreditCard";
-import isEmpy from "../Utility/Helper";
 
 
 export default class Payment implements CieloSerializable {
@@ -16,7 +15,7 @@ export default class Payment implements CieloSerializable {
     private _serviceTaxAmount ?: number;
     private _installments ?: number;
     private _interest ?: string;
-    private _capture  ?: boolean ;
+    private _capture  ?: boolean;
     private _authenticate ?: boolean;
     private _recurrent ?: string;
     private _recurrentPayment ?: string;
@@ -56,97 +55,107 @@ export default class Payment implements CieloSerializable {
     private _identification ?: string;
     private _instructions ?: string;
 
-    constructor(amount = 0 , installments = 1) {
+    constructor(amount = 0, installments = 1) {
         this._amount = amount;
         this._installments = installments;
         this._creditCard = new CreditCard;
     }
+
     toJSON() {
-         const planeObj = {
-            "Type": this.getType(),
-            "Amount": this.getAmount(),
-            "ServiceTaxAmount": this.getServiceTaxAmount(),
-            "Installments": this.getInstallments(),
-            "Interest": this.getInterest(),
-            "Capture": this.getCapture(),
-            "Authenticate": this.getAuthenticate(),
-            "SoftDescriptor": this.getSoftDescriptor(),
-            "CreditCard": this.getCreditCard(),
-            "CapturedAmount": this.getCapturedAmount(),
-            "ProofOfSale": this.getProofOfSale(),
-            "Tid": this.getTid(),
-            "AuthorizationCode": this.getAuthorizationCode(),
-            "PaymentId": this.getPaymentId(),
-            "Currency": this.getCurrency(),
-            "Country": this.getCountry(),
-            "ExtraDataCollection": this.getExtraDataCollection(),
-            "Status": this.getStatus(),
-            "ReturnCode": this.getReturnCode(),
-            "ReturnMessage": this.getReturnMessage(),
-            "Instructions": this.getInstructions(),
-            "ExpirationDate": this.getExpirationDate(),
-            "Url": this.getUrl(),
-            "Number": this.getNumber(),
-            "BarCodeNumber": this.getBarCodeNumber(),
-            "DigitableLine": this.getDigitableLine(),
-            "Assignor": this.getAssignor(),
-            "Address": this.getAddress(),
-            "Identification": this.getIdentification(),
-            "Provider": this.getProvider(),
-            "Links": this.getLinks(),
+        const planeObj: any = {
+            Type: this.getType(),
+            Amount: this.getAmount(),
+            ServiceTaxAmount: this.getServiceTaxAmount(),
+            Installments: this.getInstallments(),
+            Interest: this.getInterest(),
+            Capture: this.getCapture(),
+            Authenticate: this.getAuthenticate(),
+            SoftDescriptor: this.getSoftDescriptor(),
+            CapturedAmount: this.getCapturedAmount(),
+            ProofOfSale: this.getProofOfSale(),
+            Tid: this.getTid(),
+            AuthorizationCode: this.getAuthorizationCode(),
+            PaymentId: this.getPaymentId(),
+            Currency: this.getCurrency(),
+            Country: this.getCountry(),
+            ExtraDataCollection: this.getExtraDataCollection(),
+            Status: this.getStatus(),
+            ReturnCode: this.getReturnCode(),
+            ReturnMessage: this.getReturnMessage(),
+            Instructions: this.getInstructions(),
+            ExpirationDate: this.getExpirationDate(),
+            Url: this.getUrl(),
+            Number: this.getNumber(),
+            BarCodeNumber: this.getBarCodeNumber(),
+            DigitableLine: this.getDigitableLine(),
+            Assignor: this.getAssignor(),
+            Address: this.getAddress(),
+            Identification: this.getIdentification(),
+            Provider: this.getProvider(),
+            Links: this.getLinks(),
         };
+        if (this.getType() === Payment.PAYMENTTYPE_CREDITCARD) {
+            planeObj.CreditCard = this.getCreditCard();
+        }
+        for (const key in planeObj) {
+            if (typeof planeObj[key] === "undefined" || typeof planeObj[key] === null && planeObj.hasOwnProperty(key)) {
+                delete planeObj[key]
+            }
+        }
         return planeObj;
     }
 
 
     populate(data ?: any) {
-        this._serviceTaxAmount = data.ServiceTaxAmount;
-        this._installments = data.Installments;
-        this._interest = data.Interest;
-        this._capture = data.Capture;
-        this._authenticate = data.Authenticate;
-        this._recurrent = data.Recurrent;
-        this._recurrentPayment = data.RecurrentPayment;
-        this._creditCard = (new CreditCard).populate(data.CreditCard) ;
-        this._debitCard = data.DebitCard;
-        this._authenticationUrl = data.AuthenticationUrl;
-        this._tid = data.Tid;
-        this._proofOfSale = data.ProofOfSale;
-        this._authorizationCode = data.AuthorizationCode;
-        this._softDescriptor = data.SoftDescriptor;
-        this._returnUrl = data.ReturnUrl;
-        this._provider = data.Provider;
-        this._paymentId = data.PaymentId;
-        this._type = data.Type;
-        this._amount = data.Amount;
-        this._receivedDate = data.ReceivedDate;
-        this._capturedAmount = data.CapturedAmount;
-        this._capturedDate = data.CapturedDate;
-        this._voidedAmount = data.VoidedAmount;
-        this._voidedDate = data.VoidedDate;
-        this._currency = data.Currency;
-        this._country = data.Country;
-        this._returnCode = data.ReturnCode;
-        this._returnMessage = data.ReturnMessage;
-        this._status = data.Status;
-        this._links = data.Links;
-        this._extraDataCollection = data.ExtraDataCollection;
-        this._expirationDate = data.ExpirationDate;
-        this._url = data.Url;
-        this._number = data.Number;
-        this._boletoNumber = data.BoletoNumber;
-        this._barCodeNumber = data.BarCodeNumber;
-        this._digitableLine = data.DigitableLine;
-        this._address = data.Address;
-        this._assignor = data.Assignor;
-        this._demonstrative = data.Demonstrative;
-        this._identification = data.Identification;
-        this._instructions = data.Instructions;
+        this._serviceTaxAmount = data.ServiceTaxAmount || undefined;
+        this._installments = data.Installments || undefined;
+        this._interest = data.Interest || undefined;
+        this._capture = data.Capture || undefined;
+        this._authenticate = data.Authenticate || undefined;
+        this._recurrent = data.Recurrent || undefined;
+        this._recurrentPayment = data.RecurrentPayment || undefined;
+        this._creditCard = data.CreditCard ? (new CreditCard).populate(data.CreditCard) : undefined;
+        this._debitCard = data.DebitCard || undefined;
+        this._authenticationUrl = data.AuthenticationUrl || undefined;
+        this._tid = data.Tid || undefined;
+        this._proofOfSale = data.ProofOfSale || undefined;
+        this._authorizationCode = data.AuthorizationCode || undefined;
+        this._softDescriptor = data.SoftDescriptor || undefined;
+        this._returnUrl = data.ReturnUrl || undefined;
+        this._provider = data.Provider || undefined;
+        this._paymentId = data.PaymentId || undefined;
+        this._type = data.Type || undefined;
+        this._amount = data.Amount || undefined;
+        this._receivedDate = data.ReceivedDate || undefined;
+        this._capturedAmount = data.CapturedAmount || undefined;
+        this._capturedDate = data.CapturedDate || undefined;
+        this._voidedAmount = data.VoidedAmount || undefined;
+        this._voidedDate = data.VoidedDate || undefined;
+        this._currency = data.Currency || undefined;
+        this._country = data.Country || undefined;
+        this._returnCode = data.ReturnCode || undefined;
+        this._returnMessage = data.ReturnMessage || undefined;
+        this._status = data.Status || undefined;
+        this._links = data.Links || undefined;
+        this._extraDataCollection = data.ExtraDataCollection || undefined;
+        this._expirationDate = data.ExpirationDate || undefined;
+        this._url = data.Url || undefined;
+        this._number = data.Number || undefined;
+        this._boletoNumber = data.BoletoNumber || undefined;
+        this._barCodeNumber = data.BarCodeNumber || undefined;
+        this._digitableLine = data.DigitableLine || undefined;
+        this._address = data.Address || undefined;
+        this._assignor = data.Assignor || undefined;
+        this._demonstrative = data.Demonstrative || undefined;
+        this._identification = data.Identification || undefined;
+        this._instructions = data.Instructions || undefined;
         return this;
     }
+
     creditCard() {
         return new CreditCard();
     }
+
     newCard() {
         return new CreditCard();
     }
