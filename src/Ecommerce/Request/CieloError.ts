@@ -11,7 +11,7 @@ export default class CieloError implements CieloAPIFeedback {
      */
     constructor(message: string, code: number | string) {
         this.code = code;
-        this.message = message;
+        this.message = this.getMessage();
     }
 
     getMessage(): string {
