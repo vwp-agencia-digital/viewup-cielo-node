@@ -1,5 +1,5 @@
 import Address from "./Address";
-import isEmpy from "../Utility/Helper";
+import { cleanObject } from "../Utility/Helper";
 
 export default class Customer implements CieloSerializable {
 
@@ -109,7 +109,7 @@ export default class Customer implements CieloSerializable {
             Address: this.getAddress().toJSON(),
             DeliveryAddress: this.getDeliveryAddress().toJSON(),
         };
-        return isEmpy(planeObj);
+        return cleanObject(planeObj);
     }
 
     populate(plainObject: any): this {

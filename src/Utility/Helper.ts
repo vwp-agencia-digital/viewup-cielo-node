@@ -1,4 +1,4 @@
-const isEmpty = function (planeObj: any): any {
+export const cleanObject = function (planeObj: any): any {
     planeObj = planeObj || {};
     if (Object.keys(planeObj).length === 0) {
         return true;
@@ -15,7 +15,7 @@ const isEmpty = function (planeObj: any): any {
             }
         }
     }
-    return Object.keys(planeObj).length === 0;
+    return planeObj;
 };
 
-export default isEmpty;
+export default cleanObject;
