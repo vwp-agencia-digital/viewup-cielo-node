@@ -18,7 +18,8 @@ export default class CieloError implements CieloAPIFeedback {
         if (!CieloError.Locale) {
             return this.message;
         }
-        const feedback = CieloError.Locale.errors.find(error => error.code === this.code) || {message: this.message};
+        const finder = (error: any) => error.code === this.code;
+        const feedback = CieloError.Locale.errors.find(finder) || CieloError.Locale.updates.find(finder) || {message: this.message};
         return feedback.message;
     }
 
