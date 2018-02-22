@@ -17,10 +17,10 @@ build_lib:
     - npm run change
     - mkdir  -p  /var/www/viewup-cielo-node
     - echo $CI_COMMIT_REF_SLUG > e
-    - sudo mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html -qy
-    - sudo mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md -qy
-    - sudo rm -rf /var/www/viewup-cielo-node/vendor -qy
-    - sudo mv $CI_PROJECT_DIR/docs/vendor /var/www/viewup-cielo-node/vendor -qy
+    - mv $CI_PROJECT_DIR/docs/index.html /var/www/viewup-cielo-node/index.html
+    - mv $CI_PROJECT_DIR/docs/README.md /var/www/viewup-cielo-node/README.md
+    - rm -rf /var/www/viewup-cielo-node/vendor
+    - mv $CI_PROJECT_DIR/docs/vendor /var/www/viewup-cielo-node/vendor
 
   tags:
       - cielo
