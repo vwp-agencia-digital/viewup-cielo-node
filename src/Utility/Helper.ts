@@ -1,4 +1,5 @@
 const isEmpy = function (planeObj: any): any {
+    planeObj = planeObj || {};
     for (const key in planeObj) {
         if (typeof planeObj[key] === "object" && planeObj.hasOwnProperty(key)) {
             if (Object.keys(planeObj[key]).length < 1) {
