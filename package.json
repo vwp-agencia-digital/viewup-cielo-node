@@ -18,7 +18,7 @@
     "build": "tsc && yarn run test",
     "dist": "chmod 777 ./changelog.sh; ./changelog.sh; chmod 777 ./dist.sh; ./dist.sh"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -37,11 +37,8 @@
     "typescript": "^2.7.1"
   },
   "dependencies": {
-    "axios": "^0.17.1",
-    "moment": "^2.20.1",
-    "uniqid": "^4.1.1"
-  },
-  "files": [
-    "lib"
-  ]
+    "axios": "0.17.1",
+    "moment": "2.20.1",
+    "uniqid": "4.1.1"
+  }
 }
