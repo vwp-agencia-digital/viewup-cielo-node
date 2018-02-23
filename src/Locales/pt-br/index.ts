@@ -587,7 +587,7 @@ const errors: Array<FeedbackObject> = [
     {
         "code": 300,
         "originalMessage": "MerchantId was not found",
-        "message": "—"
+        "message": "Pagamento indisponível no momento, entre em contato com a loja"
     },
     {
         "code": 301,
@@ -597,22 +597,22 @@ const errors: Array<FeedbackObject> = [
     {
         "code": 302,
         "originalMessage": "Sent MerchantOrderId is duplicated",
-        "message": "—"
+        "message": "Pagamento indisponível no momento, entre em contato com a loja"
     },
     {
         "code": 303,
         "originalMessage": "Sent OrderId does not exist",
-        "message": "—"
+        "message": "Pagamento indisponível no momento, entre em contato com a loja"
     },
     {
         "code": 304,
         "originalMessage": "Customer Identity is required",
-        "message": "—"
+        "message": "Pagamento indisponível no momento, entre em contato com a loja"
     },
     {
         "code": 306,
         "originalMessage": "Merchant is blocked",
-        "message": "—"
+        "message": "Pagamento indisponível no momento, entre em contato com a loja"
     },
     {
         "code": 307,
