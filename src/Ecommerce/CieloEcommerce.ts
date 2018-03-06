@@ -28,27 +28,41 @@ export default class CieloEcommerce {
     }
 
     async getSale(paymentId: string) {
-        const querySaleRequest = new QuerySaleRequest(this._merchant, this._environment);
-        return await querySaleRequest.execute(paymentId);
+        try {
+
+
+            const querySaleRequest = new QuerySaleRequest(this._merchant, this._environment);
+            return await querySaleRequest.execute(paymentId);
+        } catch (e) {
+            throw e;
+        }
 
     }
 
     async cancelSale(obj: { amount: number; paymentId: string; }) {
-        const updateSaleRequest = new UpdateSaleRequest("void", this._merchant, this._environment);
+        try {
+            const updateSaleRequest = new UpdateSaleRequest("void", this._merchant, this._environment);
 
-        updateSaleRequest.setAmount(obj.amount);
-        return await updateSaleRequest.execute(obj.paymentId);
+            updateSaleRequest.setAmount(obj.amount);
+            return await updateSaleRequest.execute(obj.paymentId);
+        } catch (e) {
+            throw e;
+        }
     }
 
     //{paymentId: string, amount: number, serviceTaxAmount = null}
     async captureSale(obj: { amount: number; serviceTaxAmount: number; paymentId: string }) {
+        try {
 
-        const updateSaleRequest = new UpdateSaleRequest("capture", this._merchant, this._environment);
+            const updateSaleRequest = new UpdateSaleRequest("capture", this._merchant, this._environment);
 
-        updateSaleRequest.setAmount(obj.amount);
-        updateSaleRequest.setServiceTaxAmount(obj.serviceTaxAmount);
+            updateSaleRequest.setAmount(obj.amount);
+            updateSaleRequest.setServiceTaxAmount(obj.serviceTaxAmount);
 
-        return await updateSaleRequest.execute(obj.paymentId);
+            return await updateSaleRequest.execute(obj.paymentId);
+        } catch (e) {
+            throw e;
+        }
     }
 
     // tokenizeCard(card: CreditCard){
