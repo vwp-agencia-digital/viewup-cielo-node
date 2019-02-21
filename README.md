@@ -1,6 +1,6 @@
-# Viewup Cielo API-3.0
+# Vwp Cielo API-3.0
 
-SDK API-3.0 PHP
+SDK API-3.0 Nodejs, inspirado na sdk em PHP
 
 
 ## Dependências
@@ -10,19 +10,6 @@ SDK API-3.0 PHP
 * [Yarn](https://yarnpkg.com/pt-BR/)  >= 1.4
 * [TypeScript](https://www.typescriptlang.org/) >= 2.6.2
 
-## Configurações
-
-Repositório Local:
-
-```
-git@192.168.25.2:viewup/viewup-cielo-node.git
-```
-
-Repositório Remoto
-
-```
-ssh://root@hospedaup.com.br:288/home/git/repositories/viewup-cielo-node.git
-```
 
 ## Criando um Build
 
@@ -89,7 +76,7 @@ docsify serve docs
 
 Por envolver a interface de usuário da aplicação, o SDK funciona apenas como um framework para criação das transações.
 Nos casos onde a autorização é direta, não há limitação; mas nos casos onde é necessário a autenticação ou qualquer tipo de redirecionamento do usuário,
- o desenvolvedor deverá utilizar o SDK para gerar o pagamento e, com o link retornado pela Cielo, providenciar o redirecionamento do usuário.
+o desenvolvedor deverá utilizar o SDK para gerar o pagamento e, com o link retornado pela Cielo, providenciar o redirecionamento do usuário.
 
 ## Instalando o SDK
 
@@ -98,13 +85,13 @@ Se você já possui um projeto configurado basta adicionar o modulo usando:
 Yarn
 
 ```bash
-yarn add git+ssh://root@hospedaup.com.br/home/git/repositories/viewup-cielo-node.git
+yarn install @vwp/cielo-node
 ```
 
 NPM
 
 ```bash
-npm install --save git+ssh://root@hospedaup.com.br/home/git/repositories/viewup-cielo-node.git
+yarn install @vwp/cielo-node
 ```
 
 ## Produtos e Bandeiras suportadas e suas constantes
