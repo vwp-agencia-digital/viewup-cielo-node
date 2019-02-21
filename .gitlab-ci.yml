@@ -38,7 +38,7 @@ test_code:
   tags:
     - cielo
     - dev-ops
-    - ecommerce
+    - commerce
     - viewup
 deploy:
   stage: deploy
@@ -52,5 +52,5 @@ deploy:
   tags:
     - cielo
     - dev-ops
-    - ecommerce
+    - commerce
     - viewup
