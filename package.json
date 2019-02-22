@@ -1,6 +1,7 @@
 {
     "name": "@vwp/cielo-node",
     "description": "Cielo API v3.0.0 SDK",
+    "version": "1.1.0",
     "keywords": [
         "gateway",
         "cielo",
@@ -8,18 +9,22 @@
         "ecommerce",
         "node js cielo"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vwp-agencia-digital/viewup-cielo-node.git"
+    },
     "scripts": {
         "grunt": "grunt",
         "tsc": "tsc --watch",
         "tsc-build": "tsc",
         "app_test": "mocha test/ -s 20000 --timeout 15000 -u tdd --reporter list",
-        "document": "docsify init --local  ./docs; echo \"## ÚLTIMOS COMMITS\" >> ./docs/README.md; git log -1 -2 -3 --date=format:'%d/%m/%Y %H horas %M minutos %S segundos' --pretty=format:'\n```\n %s\nHash: %h\nEmail: %ce\nName: %cN\nDate: %cd\n```' >> ./docs/README.md",
+        "document": "mkdir -p ./docs && cp ./README.template.md ./README.md;docsify init --local  ./docs; echo \"## ÚLTIMOS COMMITS\" >> ./docs/README.md; git log -1 -2 -3 --date=format:'%d/%m/%Y %H horas %M minutos %S segundos' --pretty=format:'\n```\n %s\nHash: %h\nEmail: %ce\nName: %cN\nDate: %cd\n```' >> ./docs/README.md; rm -rf ./README.md",
         "change": "chmod 777 ./changelog.sh; ./changelog.sh",
         "build": "tsc && yarn run test",
-        "dist": "chmod 777 ./changelog.sh; ./changelog.sh; chmod 777 ./dist.sh; ./dist.sh"
+        "dist": "chmod 777 ./changelog.sh; ./changelog.sh; chmod 777 ./dist.sh; ./dist.sh",
+        "lib:publish": "chmod 777 ./changelog.sh; ./changelog.sh; chmod 777 ./dist.sh; ./dist.sh"
     },
-    "version": "1.0.6",
-    "main": "index.js",
+    "main": "lib/index.js",
     "license": "MIT",
     "devDependencies": {
         "@types/axios": "^0.14.0",

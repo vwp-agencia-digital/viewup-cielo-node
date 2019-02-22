@@ -4,7 +4,6 @@ yarn.lock
 package-lock.json
 node_modules
 *.log
-docs/
 .vscode
 CHANGELOG.md
 dist/
